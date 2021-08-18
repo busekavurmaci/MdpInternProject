@@ -52,7 +52,7 @@
                 <div class="input-group mb-2">
                     <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 35px; white-space: nowrap;" class="input-group-text" name="issue_date" id="basic-addon1">İrsaliye Tarihi: &emsp;</span>
                     <input style="width: 37%; border-color: #cccccc; border-style:solid; border-width:thin; " type="date" id="start" name="start_date"
-                           value="@DateTime.Now.AddYears(-2).ToString("yyyy-MM-dd")"
+                           value="@DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd")"
                            min="2014-01-01" max="@DateTime.Now.ToString("yyyy-MM-dd")"> &nbsp;
                     <input style="width: 37%; border-color: #cccccc; border-style: solid; border-width: thin; " type="date" id="end" name="end_date"
                            value="@DateTime.Now.ToString("yyyy-MM-dd")"
@@ -128,18 +128,62 @@
                         <tbody>
                             @foreach (DataRow dr in Model.Rows)
                             {
-                                <tr>
-                                    <td class="column"><input name="sec" type="checkbox"></td>
-                                    <td class="column">@dr["number"].ToString()</td>
-                                    <td class="column">@dr["issue_date"].ToString()</td>
-                                    <td class="column">@dr["sender_vn"].ToString()</td>
-                                    <td class="column">@dr["sender"].ToString()</td>
-                                    <td class="column">@dr["receiver_vn"].ToString()</td>
-                                    <td class="column">@dr["receiver"].ToString()</td>
-                                    <td class="column">@dr["type"].ToString()</td>
-                                    <td class="column">@dr["profile"].ToString()</td>
-                                    <td class="column">@dr["gib_status"].ToString()</td>
-                                </tr>
+                            <tr>
+                                <td class="column"><input name="sec" type="checkbox"></td>
+                                <td class="column">@dr["number"].ToString()</td>
+                                <td class="column">@dr["issue_date"].ToString()</td>
+                                <td class="column">@dr["sender_vn"].ToString()</td>
+                                <td class="column">@dr["sender"].ToString()</td>
+                                <td class="column">@dr["receiver_vn"].ToString()</td>
+                                <td class="column">@dr["receiver"].ToString()</td>
+                                <td class="column">@dr["type"].ToString()</td>
+                                <td class="column">@dr["profile"].ToString()</td>
+
+                                @{
+                                    if (Convert.ToInt32(dr["gib_status"]) == 1000)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label class="label label-warning">&nbsp;</label></td>
+                                    }
+
+                                    else if (Convert.ToInt32(dr["gib_status"]) < 1300 && Convert.ToInt32(dr["gib_status"]) > 1119)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label class="badge badge-danger">&nbsp;</label></td>
+                                    }
+
+                                    else if (Convert.ToInt32(dr["gib_status"]) == 1100)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label class="badge badge-warning">&nbsp;</label></td>
+                                    }
+
+                                    else if (Convert.ToInt32(dr["gib_status"]) <= 1110 && Convert.ToInt32(dr["gib_status"]) >= 1199)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label class="badge badge-danger">&nbsp;</label></td>
+                                    }
+
+                                    else if (Convert.ToInt32(dr["gib_status"]) == 1200)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label class="badge badge-warning">&nbsp;</label></td>
+                                    }
+
+                                    else if (Convert.ToInt32(dr["gib_status"]) <= 1201 && Convert.ToInt32(dr["gib_status"]) >= 1299)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label class="badge badge-warning">&nbsp;</label></td>
+                                    }
+
+                                    else if (Convert.ToInt32(dr["gib_status"]) == 1230)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <<label class="badge badge-danger">&nbsp;</label></td>
+                                    }
+
+                                    else if (Convert.ToInt32(dr["gib_status"]) == 1300)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label class="badge badge-success">&nbsp;</label></td>
+                                    }
+
+                                }
+
+
+                            </tr>
                             }
 
                         </tbody>
