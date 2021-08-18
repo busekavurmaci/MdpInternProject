@@ -49,7 +49,7 @@ namespace Mdp.Entities
         public Int16 year { get; set; }
         public string erp_doc_no { get; set; }
 
-        public static DataTable GetDataTable(string number, string profile, string type)
+        public static DataTable GetDataTable(string number, string profile, string type, string sender, string sender_vn, string receiver, string receiver_vn)
         {
             string sql = "SELECT * FROM outbox_da WHERE 1=1 ";
 
@@ -62,7 +62,20 @@ namespace Mdp.Entities
             if (type != "TÜMÜ")
                 sql += " AND type=@type ";
 
-            return SQLHelper.GetDataTable(sql, new string[] { "@number", "@profile", "@type" }, new object[] { number, profile, type });
+            if (!string.IsNullOrEmpty(sender))
+                //sql += " AND sender=@sender ";
+                sql += "AND sender LIKE '%" + @sender + "%'";
+
+            if (!string.IsNullOrEmpty(sender_vn))
+                sql += " AND sender_vn=@sender_vn ";
+
+            if (!string.IsNullOrEmpty(receiver_vn))
+                sql += " AND receiver_vn=@receiver_vn ";
+
+            if (!string.IsNullOrEmpty(receiver))
+                sql += "AND receiver LIKE '%" + receiver + "%'";
+
+            return SQLHelper.GetDataTable(sql, new string[] { "@number", "@profile", "@type", "@sender", "@sender_vn", "@receiver_vn", "@receiver" }, new object[] { number, profile, type, sender, sender_vn, receiver_vn, receiver });
         }
 
     }

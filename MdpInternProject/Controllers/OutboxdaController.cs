@@ -13,10 +13,10 @@ namespace MdpInternProject.Controllers
     {
        
         [HttpGet]
-        public ActionResult Outboxda(string number,string profile, string type)
+        public ActionResult Outboxda(string number,string profile, string type, string sender, string sender_vn, string receiver, string receiver_vn)
         {
 
-            DataTable dt = outbox_da.GetDataTable(number, profile, type);
+            DataTable dt = outbox_da.GetDataTable(number, profile, type, sender, sender_vn, receiver, receiver_vn);
 
             ViewBag.TotalResults = dt.Rows.Count;
 
