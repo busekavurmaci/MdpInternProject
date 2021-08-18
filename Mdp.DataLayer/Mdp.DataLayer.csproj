@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="DAL\SQL\IBusinessEntitySQL.cs" />
     <Compile Include="DAL\SQL\SQLHelper.cs" />
-    <Compile Include="DatabaseContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

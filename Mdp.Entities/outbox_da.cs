@@ -55,6 +55,7 @@ namespace Mdp.Entities
 
             if (!string.IsNullOrEmpty(number))
                 sql += " AND number=@number ";
+
             if (profile != "TÜMÜ")
                 sql += " AND profile=@profile ";
 
