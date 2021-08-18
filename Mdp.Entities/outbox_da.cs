@@ -48,8 +48,11 @@ namespace Mdp.Entities
         public DateTime gtb_ihrac_tar { get; set; }
         public Int16 year { get; set; }
         public string erp_doc_no { get; set; }
+        //-------------------------------------------------------
+        public string start_date { get; set; }
+        public string end_date { get; set; }
 
-        public static DataTable GetDataTable(string number, string profile, string type, string sender, string sender_vn, string receiver, string receiver_vn)
+        public static DataTable GetDataTable(string number, string profile, string type, string sender, string sender_vn, string receiver, string receiver_vn, string start_date, string end_date, DateTime? issue_date)
         {
             string sql = "SELECT * FROM outbox_da WHERE 1=1 ";
 
@@ -63,7 +66,6 @@ namespace Mdp.Entities
                 sql += " AND type=@type ";
 
             if (!string.IsNullOrEmpty(sender))
-                //sql += " AND sender=@sender ";
                 sql += "AND sender LIKE '%" + @sender + "%'";
 
             if (!string.IsNullOrEmpty(sender_vn))
@@ -73,9 +75,13 @@ namespace Mdp.Entities
                 sql += " AND receiver_vn=@receiver_vn ";
 
             if (!string.IsNullOrEmpty(receiver))
-                sql += "AND receiver LIKE '%" + receiver + "%'";
+                sql += " AND receiver LIKE '%" + receiver + "%'";
 
-            return SQLHelper.GetDataTable(sql, new string[] { "@number", "@profile", "@type", "@sender", "@sender_vn", "@receiver_vn", "@receiver" }, new object[] { number, profile, type, sender, sender_vn, receiver_vn, receiver });
+
+                sql += " AND issue_date between @start_date and @end_date";
+
+
+            return SQLHelper.GetDataTable(sql, new string[] { "@number", "@profile", "@type", "@sender", "@sender_vn", "@receiver_vn", "@receiver", "@start_date", "@end_date" }, new object[] { number, profile, type, sender, sender_vn, receiver_vn, receiver, start_date, end_date});
         }
 
     }
