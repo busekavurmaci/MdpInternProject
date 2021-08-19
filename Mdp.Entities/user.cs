@@ -11,6 +11,7 @@ namespace Mdp.Entities
 {
     public class user
     {
+
         public string username { get; set; }
         public string passwd { get; set; }
         public string name { get; set; }
