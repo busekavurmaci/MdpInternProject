@@ -20,14 +20,16 @@ namespace Mdp.DataLayer.DAL.SQL
 
     public class SQLHelper
     {
+        
         public static string ConnectionString
         {
-            get
+            
+        get
             {
                 //-- return System.Configuration.ConfigurationSettings.AppSettings["DB_01"];
                 //-- connection stringi yukarıdaki gibi web.config'den almayı deneyiniz.
-                return "Data Source = localhost; Initial Catalog = efaturatest; Integrated Security=true";
-
+                return ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                //return "Data Source = localhost; Initial Catalog = efaturatest; Integrated Security=true";
 
             }
         }
@@ -286,9 +288,10 @@ namespace Mdp.DataLayer.DAL.SQL
 
         public static DataTable GetDataTable(string queryText, string[] parameterNames, object[] parameterValues)
         {
-            SqlConnection cnn = new SqlConnection(ConnectionString);
 
-            SqlCommand cmd = new SqlCommand(queryText, cnn);
+            SqlConnection sqlcon = new SqlConnection(ConnectionString);
+
+            SqlCommand cmd = new SqlCommand(queryText, sqlcon);
             cmd.CommandType = CommandType.Text;
 
             if (parameterNames != null && parameterNames.Length > 0)
@@ -317,9 +320,9 @@ namespace Mdp.DataLayer.DAL.SQL
 
             finally
             {
-                if (cnn.State == ConnectionState.Open)
+                if (sqlcon.State == ConnectionState.Open)
                 {
-                    cnn.Close();
+                    sqlcon.Close();
                 }
             }
 
@@ -461,5 +464,9 @@ namespace Mdp.DataLayer.DAL.SQL
 
 
         //--------------------------------------------------------
+       
+
+
+        //---------------------------------------------------------
     }
 }

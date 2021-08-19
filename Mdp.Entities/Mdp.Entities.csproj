@@ -46,6 +46,7 @@
     <Compile Include="outbox_da.cs" />
     <Compile Include="outbox_ra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="user.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mdp.DataLayer\Mdp.DataLayer.csproj">
