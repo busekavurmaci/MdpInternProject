@@ -38,7 +38,9 @@ namespace MdpInternProject.Controllers
             }
             else
             {
-                ViewData["message"] = "Kullanıcı adı veya şifre yanlış!";
+                //ViewData["message"] = "Kullanıcı adı veya şifre yanlış!";
+                ViewBag.Message = "Kullanıcı adı veya şifre yanlış!";
+                //return RedirectToAction("Login", "Login");
             }
             sqlcon.Close();
             return View();

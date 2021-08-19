@@ -152,6 +152,33 @@
         <!-- end of container-fluid -->
     </section>
 
+    @*--------------------------------------------------------------*@
+    @if (ViewBag.Message != null)
+    {
+<script type="text/javascript">
+            window.onload = function () {
+                $("#lblError").html('@Html.Raw(ViewBag.Message)');
+                $("#MyPopup").modal("show");
+            };
+</script>}
+
+    <div id="MyPopup" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <span id="lblError"></span>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" id="btnClosePopup" value="Close" class="btn btn-dark" data-dismiss="modal" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*--------------------------------------------------------------*@
 
 
     <!-- Required Jquery -->
@@ -177,6 +204,3 @@
 </html>
 
 
-   <script>
-
-        </script>
