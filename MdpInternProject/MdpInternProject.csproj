@@ -121,7 +121,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InboxdaController.cs" />
+    <Compile Include="Controllers\InboxraController.cs" />
     <Compile Include="Controllers\OutboxdaController.cs" />
+    <Compile Include="Controllers\OutboxraController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -341,6 +344,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Outboxda\Outboxda.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Outboxra\Outboxra.cshtml" />
+    <Content Include="Views\Inboxra\Inboxra.cshtml" />
+    <Content Include="Views\Inboxda\Inboxda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Mdp.DataLayer.DAL.SQL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,5 +47,43 @@ namespace Mdp.Entities
         public DateTime gtb_ihrac_tar { get; set; }
         public int year { get; set; }
         public string erp_doc_no { get; set; }
+        //-------------------------------------------------------
+        public string start_date { get; set; }
+        public string end_date { get; set; }
+
+        public static DataTable GetDataTable(string number, string profile, string type, string sender, string sender_vn, string receiver, string receiver_vn, string start_date, string end_date, DateTime? issue_date, short? gib_status)
+        {
+            string sql = "SELECT * FROM inbox_ra WHERE 1=1 ";
+
+            if (!string.IsNullOrEmpty(number))
+                sql += " AND number=@number ";
+
+            if (profile != "TÜMÜ")
+                sql += " AND profile=@profile ";
+
+            if (type != "TÜMÜ")
+                sql += " AND type=@type ";
+
+            if (!string.IsNullOrEmpty(sender))
+                sql += "AND sender LIKE '%" + @sender + "%'";
+
+            if (!string.IsNullOrEmpty(sender_vn))
+                sql += " AND sender_vn=@sender_vn ";
+
+            if (!string.IsNullOrEmpty(receiver_vn))
+                sql += " AND receiver_vn=@receiver_vn ";
+
+            if (!string.IsNullOrEmpty(receiver))
+                sql += " AND receiver LIKE '%" + receiver + "%'";
+
+            if (!string.IsNullOrEmpty(gib_status.ToString()))
+                sql += " AND gib_status=@gib_status ";
+
+            sql += " AND issue_date between @start_date and @end_date";
+
+
+            return SQLHelper.GetDataTable(sql, new string[] { "@number", "@profile", "@type", "@sender", "@sender_vn", "@receiver_vn", "@receiver", "@start_date", "@end_date", "@gib_status" }, new object[] { number, profile, type, sender, sender_vn, receiver_vn, receiver, start_date, end_date, gib_status });
+        }
+
     }
 }

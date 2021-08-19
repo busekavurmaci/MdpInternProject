@@ -27,8 +27,11 @@ namespace Mdp.DataLayer.DAL.SQL
                 //-- return System.Configuration.ConfigurationSettings.AppSettings["DB_01"];
                 //-- connection stringi yukarıdaki gibi web.config'den almayı deneyiniz.
                 return "Data Source = localhost; Initial Catalog = efaturatest; Integrated Security=true";
+
+
             }
         }
+
 
         //public static string GetDataItem(string queryText, string[] parameterNames, object[] parameterValues, CommandType commandType)
         //{
