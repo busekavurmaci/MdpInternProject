@@ -12,17 +12,30 @@ namespace MdpInternProject.Controllers
     public class InboxraController : Controller
     {
 
-            [HttpGet]
-            public ActionResult Inboxra(string number, string profile, string type, string sender, string sender_vn, string receiver, string receiver_vn, string start_date, string end_date, DateTime? issue_date, short? gib_status)
-            {
+        [HttpGet]
+        public ActionResult Inboxra(string profile, string type, string sender, string sender_vn, string receiver, string receiver_vn, string start_date, string end_date, DateTime? issue_date, short? gib_status)
+        {
 
-                DataTable dt = inbox_ra.GetDataTable(number, profile, type, sender, sender_vn, receiver, receiver_vn, start_date, end_date, issue_date, gib_status);
+            DataTable dt = outbox_da.GetDataTable(profile, type, sender, sender_vn, receiver, receiver_vn, start_date, end_date, issue_date, gib_status);
 
-                ViewBag.TotalResults = dt.Rows.Count;
+            ViewBag.TotalResults = dt.Rows.Count;
 
-                return View(dt);
+            return View(dt);
 
-            }
-            ////-----------------------------------------------------------------
         }
+
+        ////-----------------------------------------------------------------
+        [HttpPost]
+        public ActionResult Inboxra(string number)
+        {
+
+            DataTable dt = outbox_da.GetDataTable2(number);
+
+            ViewBag.TotalResults = dt.Rows.Count;
+
+            return View(dt);
+
+        }
+
     }
+}

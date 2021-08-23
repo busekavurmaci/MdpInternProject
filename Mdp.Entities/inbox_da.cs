@@ -51,12 +51,9 @@ namespace Mdp.Entities
         public string start_date { get; set; }
         public string end_date { get; set; }
 
-        public static DataTable GetDataTable(string number, string profile, string type, string sender, string sender_vn, string receiver, string receiver_vn, string start_date, string end_date, DateTime? issue_date, short? gib_status)
+        public static DataTable GetDataTable(string profile, string type, string sender, string sender_vn, string receiver, string receiver_vn, string start_date, string end_date, DateTime? issue_date, short? gib_status)
         {
             string sql = "SELECT * FROM inbox_da WHERE 1=1 ";
-
-            if (!string.IsNullOrEmpty(number))
-                sql += " AND number=@number ";
 
             if (profile != "TÜMÜ")
                 sql += " AND profile=@profile ";
@@ -82,7 +79,20 @@ namespace Mdp.Entities
             sql += " AND issue_date between @start_date and @end_date";
 
 
-            return SQLHelper.GetDataTable(sql, new string[] { "@number", "@profile", "@type", "@sender", "@sender_vn", "@receiver_vn", "@receiver", "@start_date", "@end_date", "@gib_status" }, new object[] { number, profile, type, sender, sender_vn, receiver_vn, receiver, start_date, end_date, gib_status });
+            return SQLHelper.GetDataTable(sql, new string[] { "@profile", "@type", "@sender", "@sender_vn", "@receiver_vn", "@receiver", "@start_date", "@end_date", "@gib_status" }, new object[] { profile, type, sender, sender_vn, receiver_vn, receiver, start_date, end_date, gib_status });
+        }
+        //----------------------------------------------
+
+        public static DataTable GetDataTable2(string number)
+        {
+            string sql = "SELECT * FROM inbox_da WHERE 1=1 ";
+
+            if (!string.IsNullOrEmpty(number))
+                sql += " AND number=@number ";
+
+
+
+            return SQLHelper.GetDataTable2(sql, new string[] { "@number" }, new object[] { number });
         }
 
     }

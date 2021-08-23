@@ -23,7 +23,7 @@ namespace Mdp.Entities
         public short role_id { get; set; }
         public short status { get; set; }
 
-       
+        public bool RememberMe { get; set; }
 
     }
 }

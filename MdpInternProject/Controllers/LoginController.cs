@@ -7,18 +7,21 @@ using System.Data;
 using System.Data.SqlClient;
 using Mdp.Entities;
 using System.Configuration;
+using System.Web.Security;
 
 namespace MdpInternProject.Controllers
 {
     public class LoginController : Controller
     {
 
+        [Authorize]
         public ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        //[AllowAnonymous]
         public ActionResult Login(user userr)
         {
             string maincon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -34,17 +37,26 @@ namespace MdpInternProject.Controllers
 
             if (sdr.Read())
             {
+                if (userr.RememberMe == true)
+                {
+                    FormsAuthentication.SetAuthCookie(userr.username, userr.RememberMe);
+                }
+
                 return RedirectToAction("Index","Home");
             }
             else
             {
-                //ViewData["message"] = "Kullanıcı adı veya şifre yanlış!";
                 ViewBag.Message = "Kullanıcı adı veya şifre yanlış!";
-                //return RedirectToAction("Login", "Login");
             }
             sqlcon.Close();
             return View();
         }
+        //---------------------------------------
+
+        
+
+
+    }
     }
 
-}
+

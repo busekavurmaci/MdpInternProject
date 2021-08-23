@@ -328,7 +328,49 @@ namespace Mdp.DataLayer.DAL.SQL
 
             return dt;
         }
+        //------------------------------------------------------------
+        public static DataTable GetDataTable2(string queryText, string[] parameterNames, object[] parameterValues)
+        {
 
+            SqlConnection sqlcon = new SqlConnection(ConnectionString);
+
+            SqlCommand cmd = new SqlCommand(queryText, sqlcon);
+            cmd.CommandType = CommandType.Text;
+
+            if (parameterNames != null && parameterNames.Length > 0)
+            {
+                for (int i = 0; i < parameterNames.Length; i++)
+                {
+                    if (parameterValues[i] != null) //-- null parametreleri ekleme
+                        cmd.Parameters.AddWithValue(parameterNames[i], parameterValues[i]);
+                }
+            }
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Data == null)
+                {
+                    throw;
+                }
+
+            }
+
+
+            finally
+            {
+                if (sqlcon.State == ConnectionState.Open)
+                {
+                    sqlcon.Close();
+                }
+            }
+
+            return dt;
+        }
         //--------------------------------------------------------
         //public static List<string> GetDataItemsString(string queryText, string[] parameterNames, object[] parameterValues, CommandType commandType)
         //{
@@ -464,7 +506,7 @@ namespace Mdp.DataLayer.DAL.SQL
 
 
         //--------------------------------------------------------
-       
+
 
 
         //---------------------------------------------------------
