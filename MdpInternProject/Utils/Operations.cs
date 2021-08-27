@@ -7,7 +7,8 @@ using System.Xml.Xsl;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-//using Saxon.Api;
+using Saxon.Api;
+using System.Diagnostics;
 
 namespace MdpInternProject.Utils
 {
@@ -146,19 +147,19 @@ namespace MdpInternProject.Utils
                     }
                 }
 
-                string htmlPartForBarcode = "";
-                if ((!string.IsNullOrEmpty(barcode)) && (hata == ""))
-                {
-                    htmlPartForBarcode = I2of5.GenerateImageHTML(barcode);
-                    int bodyIndex = ret.IndexOf("<body");
-                    if (bodyIndex > -1)
-                    {
-                        int bodyEndIndex = ret.IndexOf(">", bodyIndex + 1);
-                        ret = ret.Insert(bodyEndIndex + 1, htmlPartForBarcode);
-                    }
-                    else
-                        ret = ret.Insert(0, htmlPartForBarcode);
-                }
+                //string htmlPartForBarcode = "";
+                //if ((!string.IsNullOrEmpty(barcode)) && (hata == ""))
+                //{
+                //    htmlPartForBarcode = I2of5.GenerateImageHTML(barcode);
+                //    int bodyIndex = ret.IndexOf("<body");
+                //    if (bodyIndex > -1)
+                //    {
+                //        int bodyEndIndex = ret.IndexOf(">", bodyIndex + 1);
+                //        ret = ret.Insert(bodyEndIndex + 1, htmlPartForBarcode);
+                //    }
+                //    else
+                //        ret = ret.Insert(0, htmlPartForBarcode);
+                //}
 
                 if (hata != "")
                 {
@@ -226,7 +227,10 @@ namespace MdpInternProject.Utils
             transformer.InitialContextNode = input;
 
             // Create a serializer.
-            Serializer serializer = new Serializer();
+
+            //Serializer serializer = new Serializer();
+            Saxon.Api.Processor clsProcessor = new Processor(); var serializer = clsProcessor.NewSerializer();
+
             //serializer.SetOutputWriter(Response.Output); //for screen
             StringWriter results = new StringWriter();
             serializer.SetOutputWriter(results);

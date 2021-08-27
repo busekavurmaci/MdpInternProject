@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ForgetPasswordModel.cs" />
     <Compile Include="inbox_da.cs" />
     <Compile Include="inbox_ra.cs" />
     <Compile Include="outbox_da.cs" />

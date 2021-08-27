@@ -16,6 +16,7 @@ namespace MdpInternProject.Controllers
 
         public ActionResult Login()
         {
+            //-- form authentication
             HttpCookie cookie = Request.Cookies["cerezim"];
             if (cookie != null)
             {
