@@ -7,21 +7,25 @@ using System.Data;
 using System.Data.SqlClient;
 using Mdp.Entities;
 using System.Configuration;
-using System.Web.Security;
+using System.Text;
 
 namespace MdpInternProject.Controllers
 {
     public class LoginController : Controller
     {
 
-        [Authorize]
         public ActionResult Login()
         {
+            HttpCookie cookie = Request.Cookies["cerezim"];
+            if (cookie != null)
+            {
+                ViewBag.username = cookie["username"].ToString();
+                ViewBag.passwd = cookie["passwd"].ToString();
+            }
             return View();
         }
 
         [HttpPost]
-        //[AllowAnonymous]
         public ActionResult Login(user userr)
         {
             string maincon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -39,10 +43,21 @@ namespace MdpInternProject.Controllers
             {
                 if (userr.RememberMe == true)
                 {
-                    FormsAuthentication.SetAuthCookie(userr.username, userr.RememberMe);
+                    HttpCookie cerez = new HttpCookie("cerezim");
+                    cerez.Expires = DateTime.Now.AddYears(1); // Süre(1 yıl)
+                    cerez.Values.Add("username", userr.username);
+                    cerez.Values.Add("passwd", userr.passwd);
+                    Response.Cookies.Add(cerez);
+
+                    cerez = Request.Cookies["cerezim"];
+
+                    if (cerez != null)
+                    {
+                        ViewBag.username = cerez["username"].ToString();
+                    }
                 }
 
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -51,12 +66,7 @@ namespace MdpInternProject.Controllers
             sqlcon.Close();
             return View();
         }
-        //---------------------------------------
-
-        
-
 
     }
-    }
 
-
+}
