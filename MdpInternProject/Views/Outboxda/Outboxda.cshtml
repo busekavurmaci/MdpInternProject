@@ -7,252 +7,254 @@
 
 <div>
     <h3>Gönderilmiş e-İrsaliye</h3>
-          <div style="padding:1px; margin-left:1px; margin-right:1px; max-width:max-content;" id="formid" class="container">
-              <div style="justify-content: space-between; display: flex;" class="row">
-                  <div style="border:1px solid #cacaca; padding:30px;" class="col-sm-9 col-md-9 col-lg-9 col-xl-9 col-xxl-9">
-                      @using (Html.BeginForm("Outboxda", "Outboxda", FormMethod.Get))
-                      {
-                          <div class="row">
-                              <div class="col-md-4">
-                                  <div class="input-group mb-2">
-                                      <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">Alıcı VKN: &emsp;</span>
-                                      <input style="width: 75%; height:30px;" type="text" class="form-control" name="receiver_vn" aria-label="receiver_vn" aria-describedby="basic-addon1">
-                                  </div>
-                              </div>
+    <div style="padding:1px; margin-left:1px; margin-right:1px; max-width:max-content;" id="formid" class="container">
+        <div style="justify-content: space-between; display: flex;" class="row">
+            <div style="border:1px solid #cacaca; padding:20px;" class="col-sm-9 col-md-9 col-lg-9 col-xl-9 col-xxl-9">
+                @using (Html.BeginForm("Outboxda", "Outboxda", FormMethod.Get))
+                {
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group mb-2">
+                                <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">Alıcı VKN: &emsp;</span>
+                                <input style="width: 75%; height:30px;" type="text" class="form-control" name="receiver_vn" aria-label="receiver_vn" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
 
-                              <div class="col-md-4">
-                                  <div class="input-group mb-2">
-                                      <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">Alıcı Adı:</span>
-                                      <input style="width: 75%; height:30px;" type="text" class="form-control" name="receiver" aria-label="receiver" aria-describedby="basic-addon1">
-                                  </div>
-                              </div>
+                        <div class="col-md-4">
+                            <div class="input-group mb-2">
+                                <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">Alıcı Adı:</span>
+                                <input style="width: 75%; height:30px;" type="text" class="form-control" name="receiver" aria-label="receiver" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
 
-                              <div class="col-md-4">
-                                  <div class="input-group mb-2">
-                                      <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">Senaryo: &emsp;</span>
-                                      <select style="width: 75%; height: 30px; border-color: #cccccc; " class="form-select" name="profile" aria-label="profile">
-                                          <option selected>TÜMÜ</option>
-                                          <option value="TEMELFATURA">TEMEL FATURA</option>
-                                          <option value="TICARIFATURA">TİCARİ FATURA</option>
-                                          <option value="IHRACAT">İHRACAT</option>
-                                          <option value="YOLCUBERABERFATURA">YOLCU BERABER FATURA</option>
-                                          <option value="HKS">HKS</option>
-                                          <option value="TEMELIRSALIYE">TEMEL iRSALIYE</option>
-                                      </select>
-                                  </div>
-                              </div>
+                        <div class="col-md-4">
+                            <div class="input-group mb-2">
+                                <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">Senaryo: &emsp;</span>
+                                <select style="width: 75%; height: 30px; border-color: #cccccc; " class="form-select" name="profile" aria-label="profile">
+                                    <option selected>TÜMÜ</option>
+                                    <option value="TEMELFATURA">TEMEL FATURA</option>
+                                    <option value="TICARIFATURA">TİCARİ FATURA</option>
+                                    <option value="IHRACAT">İHRACAT</option>
+                                    <option value="YOLCUBERABERFATURA">YOLCU BERABER FATURA</option>
+                                    <option value="HKS">HKS</option>
+                                    <option value="TEMELIRSALIYE">TEMEL iRSALIYE</option>
+                                </select>
+                            </div>
+                        </div>
 
-                              <div class="col-md-4">
-                                  <div class="input-group mb-2">
-                                      <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">Gönderen VKN: </span>
-                                      <input style="width: 75%; height: 30px;" type="text" class="form-control" name="sender_vn" aria-label="sender_vn" aria-describedby="basic-addon1">
-                                  </div>
-                              </div>
+                        <div class="col-md-4">
+                            <div class="input-group mb-2">
+                                <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">Gönderen VKN: </span>
+                                <input style="width: 75%; height: 30px;" type="text" class="form-control" name="sender_vn" aria-label="sender_vn" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
 
-                              <div class="col-md-4">
-                                  <div class="input-group mb-2">
-                                      <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">Gönderen Adı:</span>
-                                      <input style="width: 75%; height: 30px;" type="text" class="form-control" name="sender" aria-label="sender" aria-describedby="basic-addon1">
-                                  </div>
-                              </div>
+                        <div class="col-md-4">
+                            <div class="input-group mb-2">
+                                <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">Gönderen Adı:</span>
+                                <input style="width: 75%; height: 30px;" type="text" class="form-control" name="sender" aria-label="sender" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
 
-                              <div class="col-md-4">
-                                  <div class="input-group mb-2">
-                                      <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">Belge Tipi: &emsp;</span>
-                                      <select style="width: 75%; height: 30px; border-color: #cccccc; " class="form-select" name="type" aria-label="type">
-                                          <option selected>TÜMÜ</option>
-                                          <option value="SEVK">SEVK</option>
-                                          <option value="SATIS">SATIŞ</option>
-                                          <option value="IADE">İADE</option>
-                                          <option value="ISTISNA">İSTİSNA</option>
-                                          <option value="TEVKIFAT">TEVKİFAT</option>
-                                          <option value="OZELMATRAH">ÖZEL MATRAH</option>
-                                          <option value="IHRACKAYITLI">İHRAÇ KAYITLI</option>
-                                      </select>
-                                  </div>
-                              </div>
+                        <div class="col-md-4">
+                            <div class="input-group mb-2">
+                                <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">Belge Tipi: &emsp;</span>
+                                <select style="width: 75%; height: 30px; border-color: #cccccc; " class="form-select" name="type" aria-label="type">
+                                    <option selected>TÜMÜ</option>
+                                    <option value="SEVK">SEVK</option>
+                                    <option value="SATIS">SATIŞ</option>
+                                    <option value="IADE">İADE</option>
+                                    <option value="ISTISNA">İSTİSNA</option>
+                                    <option value="TEVKIFAT">TEVKİFAT</option>
+                                    <option value="OZELMATRAH">ÖZEL MATRAH</option>
+                                    <option value="IHRACKAYITLI">İHRAÇ KAYITLI</option>
+                                </select>
+                            </div>
+                        </div>
 
-                              <div class="col-md-4">
-                                  <div class="input-group mb-2">
-                                      <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">GIB Durumu: &emsp;</span>
-                                      <input style="width: 75%; height: 30px;" type="text" class="form-control" name="gib_status" aria-label="gib_status" aria-describedby="basic-addon1">
-                                  </div>
-                              </div>
-                              <div class="col-md-4">
-                                  <div class="input-group mb-2">
-                                      <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" name="issue_date" id="basic-addon1">İrsaliye Tarihi:&emsp;</span>
-                                      <input style="width: min-content; border-color: #cccccc; border-style:solid; border-width:thin; " type="date" id="start" name="start_date"
-                                             value="@DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd")"
-                                             min="2014-01-01" max="@DateTime.Now.ToString("yyyy-MM-dd")"> &nbsp;
-                                      <input style="width: auto; border-color: #cccccc; border-style: solid; border-width: thin; " type="date" id="end" name="end_date"
-                                             value="@DateTime.Now.ToString("yyyy-MM-dd")"
-                                             min="2014-01-01" max="@DateTime.Now.ToString("yyyy-MM-dd")">
-                                  </div>
-                              </div>
+                        <div class="col-md-4">
+                            <div class="input-group mb-2">
+                                <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">GIB Durumu: &emsp;</span>
+                                <input style="width: 75%; height: 30px;" type="text" class="form-control" name="gib_status" aria-label="gib_status" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group mb-2">
+                                <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" name="issue_date" id="basic-addon1">İrsaliye Tarihi:&emsp;</span>
+                                <input style="width: min-content; border-color: #cccccc; border-style:solid; border-width:thin; " type="date" id="start" name="start_date"
+                                       value="@DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd")"
+                                       min="2014-01-01" max="@DateTime.Now.ToString("yyyy-MM-dd")"> &nbsp;
+                                <input style="width: auto; border-color: #cccccc; border-style: solid; border-width: thin; " type="date" id="end" name="end_date"
+                                       value="@DateTime.Now.ToString("yyyy-MM-dd")"
+                                       min="2014-01-01" max="@DateTime.Now.ToString("yyyy-MM-dd")">
+                            </div>
+                        </div>
 
-                              <div class="col-md-4">
-                                  <button style="padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; width: auto; height: 30px; margin-left: 58%; margin-right: 10%; " type="submit" class="btn btn-dark">Sorgula</button>
-                              </div>
-                          </div>
+                        <div class="col-md-4">
+                            <button style="padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; width: auto; height: 30px; margin-left: 58%; margin-right: 10%; " type="submit" class="btn btn-dark">Sorgula</button>
+                        </div>
+                    </div>
 
-                      }
-                  </div>
+                }
+            </div>
 
-                  @*<div style="border-left: 1px solid black; height: auto"></div>*@
+            @*<div style="border-left: 1px solid black; height: auto"></div>*@
 
-                  <div style="border: 1px solid #cacaca; padding: 30px; " class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 ">
-                      @using (Html.BeginForm("Outboxda", "Outboxda", FormMethod.Post))
-                      {
-                                  @*<div class="input-group mb-2">
-                                      <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">İrsaliye No: &emsp;</span>
-                                      <input style="width: 56%; height: 30px;" type="text" name="number" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                      <div class="input-group-append">
-                                          <button style="height: 30px; padding-top: 2px; padding-bottom: 2px; " class="input-group-button btn btn-dark" type="submit">Bul</button>
-                                      </div>
-                                  </div>*@
-                                  <div class="input-group mb-2">
-                                      <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">İrsaliye No: </span>
-                                      <input style="width: 75%; height: 30px;" type="text" name="number" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                  </div>
-                                  <br />
-                                  <button style="padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; width: auto; height: 30px; margin-left: 65%; margin-right: 10%; " type="submit" class="btn btn-dark">Bul</button>
-                      }
-                  </div>
+            <div style="border: 1px solid #cacaca; padding: 20px; " class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 ">
+                @using (Html.BeginForm("Outboxda", "Outboxda", FormMethod.Post))
+                {
+                    <div class="input-group mb-2">
+                        <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">İrsaliye No: </span>
+                        <input style="width: 75%; height: 30px;" type="text" name="number" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+                    <br />
+                    <button style="padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; width: auto; height: 30px; margin-left: 65%; margin-right: 10%; " type="submit" class="btn btn-dark">Bul</button>
+                }
+            </div>
 
-              </div>
-          </div>
-                  @*------------------------------------------------------------*@
+        </div>
+    </div>
+    @*------------------------------------------------------------*@
 
-                  <div style="margin-top:20px;" class="limiter">
-                      <div class="container-table100">
-                          <div class="wrap-table100">
-                              <div style="overflow-x:auto;" class="table100">
-                                  <table id="dataTable">
-                                      @{
-                                          int i = 1;
-                                      }
-                                      @foreach (DataRow dr in Model.Rows)
-                                      {
+    <div style="margin-top: 20px;" class="limiter">
+        <div class="container-table100">
+            <div style="width: 100%;" class="wrap-table100">
+                <div style="overflow-x:auto; width:100%;" class="table100">
+                    <table style="width: 100%;" id="dataTable">
+                        @{
+                            int i = 1;
+                        }
+                        @foreach (DataRow dr in Model.Rows)
+                        {
 
-                                          if (i == 1)
-                                          {
-                                              <thead>
-                                                  <tr class="table100-head">
-                                                      <th class="column"><input id="select-all" type="checkbox"></th>
-                                                      <th class="column">İrsaliye No</th>
-                                                      <th class="column">İrsaliye Tarih</th>
-                                                      <th class="column">Gönderen VKN</th>
-                                                      <th class="column">Gönderen Adı</th>
-                                                      <th class="column">Alıcı VKN</th>
-                                                      <th class="column">Alıcı Adı</th>
-                                                      <th class="column">Tip</th>
-                                                      <th class="column">Senaryo</th>
-                                                      <th class="column">GIB Durumu</th>
-                                                  </tr>
-                                              </thead>
-                                              i++;
-                                          }
-                                          <tr>
-                                              <td class="column"><input name="sec" type="checkbox"></td>
-                                              <td class="column">@dr["number"].ToString()</td>
-                                              <td class="column">@dr["issue_date"].ToString()</td>
-                                              <td class="column">@dr["sender_vn"].ToString()</td>
-                                              <td class="column">@dr["sender"].ToString()</td>
-                                              <td class="column">@dr["receiver_vn"].ToString()</td>
-                                              <td class="column">@dr["receiver"].ToString()</td>
-                                              <td class="column">@dr["type"].ToString()</td>
-                                              <td class="column">@dr["profile"].ToString()</td>
+                            if (i == 1)
+                            {
+                                <thead>
+                                    <tr class="table100-head">
+                                        <th class="column"><input id="select-all" type="checkbox"></th>
+                                        <th class="column">İrsaliye No</th>
+                                        <th class="column">İrsaliye Tarih</th>
+                                        <th class="column">Gönderen VKN</th>
+                                        <th class="column">Gönderen Adı</th>
+                                        <th class="column">Alıcı VKN</th>
+                                        <th class="column">Alıcı Adı</th>
+                                        <th class="column">Tip</th>
+                                        <th class="column">Senaryo</th>
+                                        <th class="column">GIB Durumu</th>
+                                    </tr>
+                                </thead>
+                                i++;
+                            }
+                            <tr>
+                                <td class="column"><input name="sec" type="checkbox"></td>
+                                <td class="column">@dr["number"].ToString()</td>
+                                <td class="column">@dr["issue_date"].ToString()</td>
+                                <td class="column">@dr["sender_vn"].ToString()</td>
+                                <td class="column">@dr["sender"].ToString()</td>
+                                <td class="column">@dr["receiver_vn"].ToString()</td>
+                                <td class="column">@dr["receiver"].ToString()</td>
+                                <td class="column">@dr["type"].ToString()</td>
+                                <td class="column">@dr["profile"].ToString()</td>
 
-                                              @{
-                                                  if (Convert.ToInt32(dr["gib_status"]) == 1000)
-                                                  {
-                                                      <td class="column">@dr["gib_status"].ToString() <label data-toggle="todoltip" data-placement="top" title="sarı" class="label label-warning">&nbsp;</label></td>
-                                                  }
+                                @{
+                                    if (Convert.ToInt32(dr["gib_status"]) == 1000)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Zarf Kuyruğa Eklendi." class="badge badge-warning">&nbsp;</label></td>
+                                    }
 
-                                                  else if (Convert.ToInt32(dr["gib_status"]) == 1100)
-                                                  {
-                                                      <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Denesarıme" class="badge badge-warning">&nbsp;</label></td>
-                                                  }
+                                    else if (Convert.ToInt32(dr["gib_status"]) == 1100)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Zarf İşleniyor." class="badge badge-warning">&nbsp;</label></td>
+                                    }
 
-                                                  else if (Convert.ToInt32(dr["gib_status"]) <= 1199 && Convert.ToInt32(dr["gib_status"]) >= 1110)
-                                                  {
-                                                      <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="kırmızı" class="badge badge-danger">&nbsp;</label></td>
-                                                  }
+                                    else if (Convert.ToInt32(dr["gib_status"]) <= 1199 && Convert.ToInt32(dr["gib_status"]) >= 1110)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Gönderildi - GIB'de Hata Aldı!" class="badge badge-danger">&nbsp;</label></td>
+                                    }
 
-                                                  else if (Convert.ToInt32(dr["gib_status"]) == 1200)
-                                                  {
-                                                      <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="sarı" class="badge badge-warning">&nbsp;</label></td>
-                                                  }
+                                    else if (Convert.ToInt32(dr["gib_status"]) == 1200)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Zarf Başarıyla İşlendi" class="badge badge-warning">&nbsp;</label></td>
+                                    }
 
-                                                  else if (Convert.ToInt32(dr["gib_status"]) <= 1299 && Convert.ToInt32(dr["gib_status"]) >= 1201 && Convert.ToInt32(dr["gib_status"]) != 1230)
-                                                  {
-                                                      <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="sarı" class="badge badge-warning">&nbsp;</label></td>
-                                                  }
+                                    else if (Convert.ToInt32(dr["gib_status"]) <= 1299 && Convert.ToInt32(dr["gib_status"]) >= 1201 && Convert.ToInt32(dr["gib_status"]) != 1220)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Alıcıdan Hata Aldı!" class="badge badge-warning">&nbsp;</label></td>
+                                    }
 
-                                                  else if (Convert.ToInt32(dr["gib_status"]) == 1230)
-                                                  {
-                                                      <td class="column">@dr["gib_status"].ToString() <<label data-toggle="tooltip" data-placement="top" title="kırmızı" class="badge badge-danger">&nbsp;</label></td>
-                                                  }
+                                    else if (Convert.ToInt32(dr["gib_status"]) == 1220)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Alıcıdan Sistem Yanıtı Başarısız Geldi." class="badge badge-danger">&nbsp;</label></td>
+                                    }
 
-                                                  else if (Convert.ToInt32(dr["gib_status"]) == 1300)
-                                                  {
-                                                      <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="yeşil" class="badge badge-success">&nbsp;</label></td>
-                                                  }
+                                    else if (Convert.ToInt32(dr["gib_status"]) == 1300)
+                                    {
+                                        <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Başarıyla Tamamlandı." class="badge badge-success">&nbsp;</label></td>
+                                    }
 
-                                              }
+                                }
 
-                                          </tr>
-                                      }
+                            </tr>
+                        }
 
-                                  </table>
-                              </div>
-                              @ViewBag.TotalResults <label>sonuç bulundu.</label>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    int k = 1;
+}
+@foreach (DataRow dr in Model.Rows)
+{
 
-                              <div class="col-md-4">
-                                  <button class="btn btn-dark" style=" position: absolute; left: 0;" onclick="javascript: fnExcelReport('dataTable', 'data')">Excel'e Aktar</button>
-                              </div>
+    if (k == 1)
+    {
+        @ViewBag.TotalResults <label>sonuç bulundu.</label>
 
-                          </div>
-                      </div>
-                  </div>
+        <div class="col-md-4">
+            <button class="btn btn-dark" style="font-size:13px; width: 105px; height: 30px; padding:1px; position: absolute; left: 0;" onclick="javascript: fnExcelReport('dataTable', 'data')"><i class="far fa-file-excel"></i>Excel'e Aktar</button>
+        </div>
+        k++;
+    }
+}
 
-                  @*----------------------------------------------------------*@
-              </div>
-              <script src="~/Content/FileSaver.js"></script>
-              <script>
-                  document.getElementById('select-all').onclick = function () {
-                      var checkboxes = document.getElementsByName('sec');
-                      for (var checkbox of checkboxes) {
-                          checkbox.checked = this.checked;
-                      }
-                  }
+<script src="~/Content/FileSaver.js"></script>
+<script>
+    document.getElementById('select-all').onclick = function () {
+        var checkboxes = document.getElementsByName('sec');
+        for (var checkbox of checkboxes) {
+            checkbox.checked = this.checked;
+        }
+    }
 
-                  $(document).ready(function () {
-                      $('[data-toggle="tooltip"]').tooltip();
-                  });
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 
-                  function fnExcelReport(id, name) {
-                      var tab_text = '<html xmlns: x="urn:schemas-microsoft-com:office:excel">';
-                      tab_text = tab_text + '<head><xml><x: ExcelWorkbook><x: ExcelWorksheets><x: ExcelWorksheet>';
-                      tab_text = tab_text + '<x: Name>Test Sheet</x: Name>';
-                      tab_text = tab_text + '<x: WorksheetOptions><x: Panes></x: Panes></x: WorksheetOptions ></x: ExcelWorksheet > ';
-                      tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
-                      tab_text = tab_text + "<table border='1px' style='color:black'>";
+    function fnExcelReport(id, name) {
+        var tab_text = '<html xmlns: x="urn:schemas-microsoft-com:office:excel">';
+        tab_text = tab_text + '<head><xml><x: ExcelWorkbook><x: ExcelWorksheets><x: ExcelWorksheet>';
+        tab_text = tab_text + '<x: Name>Test Sheet</x: Name>';
+        tab_text = tab_text + '<x: WorksheetOptions><x: Panes></x: Panes></x: WorksheetOptions ></x: ExcelWorksheet > ';
+        tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+        tab_text = tab_text + "<table border='1px' style='color:black'>";
 
 
-                      var exportTable = $('#' + id).clone();
-                      exportTable.find('th').last().remove();
-                      exportTable.find('input').each(function (index, elem) { $(elem).remove(); });
-                      exportTable.find('a').each(function (index, elem) { $(elem).remove(); });
+        var exportTable = $('#' + id).clone();
+        exportTable.find('th').last().remove();
+        exportTable.find('input').each(function (index, elem) { $(elem).remove(); });
+        exportTable.find('a').each(function (index, elem) { $(elem).remove(); });
 
-                      tab_text = tab_text + exportTable.html();
-                      tab_text = tab_text + '</table></body></html>';
-                      var fileName = "Report" + '.xls';
+        tab_text = tab_text + exportTable.html();
+        tab_text = tab_text + '</table></body></html>';
+        var fileName = "Report" + '.xls';
 
-                      //Save the file
-                      var blob = new Blob([tab_text], { type: "application/vnd.ms-excel;charset=utf-8" })
-                      window.saveAs(blob, fileName);
-                  }
+        //Save the file
+        var blob = new Blob([tab_text], { type: "application/vnd.ms-excel;charset=utf-8" })
+        window.saveAs(blob, fileName);
+    }
 
-              </script>
+</script>
 

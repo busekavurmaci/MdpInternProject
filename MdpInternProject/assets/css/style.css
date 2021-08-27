@@ -11391,7 +11391,7 @@ div.DTFC_RightWrapper table.dataTable.no-footer {
 
 th,
 td {
-  white-space: nowrap; }
+  white-space: normal; }
 
 /*===== Fixed-header data-table ===== */
 table.fixedHeader-floating {
