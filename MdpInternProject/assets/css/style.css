@@ -2996,9 +2996,10 @@ a[data-toggle="lightbox"] .img-fluid {
   margin: 5px 0; }
 
 .vertical-alignment .row {
-  padding: 15px 0;
-  min-height: 10rem;
-  border: 1px solid #ddd; }
+    padding: 15px 0;
+    min-height: 10rem;
+    border: 1px solid #ddd;
+}
 
 .inte-benifits {
   border: 1px solid #ddd; }

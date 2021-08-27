@@ -88,8 +88,10 @@ namespace Mdp.Entities
         {
             string sql = "SELECT * FROM outbox_ra WHERE 1=1 ";
 
-            if (!string.IsNullOrEmpty(number))
+            if (number != null)
+            {
                 sql += " AND number=@number ";
+            }
 
 
 
