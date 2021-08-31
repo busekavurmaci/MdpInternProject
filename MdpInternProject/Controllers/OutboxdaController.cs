@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 using Mdp.Entities;
+using MdpInternProject.Utils;
+using System.Xml;
 
 namespace MdpInternProject.Controllers
 {
@@ -35,6 +37,28 @@ namespace MdpInternProject.Controllers
 
             return View(dt);
 
+        }
+
+        [HttpPost]
+        public ActionResult ViewInvoice(string xmlcontent, string box, Boolean encoded, bool removePreambles, string barcode, bool showAttachments)
+        {
+            outbox_da outboxda = new outbox_da();
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(Server.MapPath(xmlcontent));
+
+            outboxda.xmlcontent = xmlcontent;
+            encoded = true;
+            removePreambles = false;
+            showAttachments = false;
+            //box = null;
+            //barcode = null;
+            
+            var s = Operations.TransformXMLToHTML(xmlcontent, box, encoded, removePreambles, barcode, showAttachments);
+            return View(s);
+
+            //XmlDocument xmldc = new XmlDocument(xmlcontent);
+            //return View(xmldc);
         }
 
     }

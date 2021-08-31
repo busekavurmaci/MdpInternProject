@@ -8,25 +8,25 @@
     <h3>Gönderilmiş e-İrsaliye</h3>
     <div style="padding:1px; margin-left:1px; margin-right:1px; max-width:max-content;" id="formid" class="container">
         <div style="justify-content: space-between; display: flex;" class="row">
-            <div style="border:1px solid #cacaca; padding:20px;" class="col-sm-9 col-md-9 col-lg-9 col-xl-9 col-xxl-9">
+            <div style="border:1px solid #cacaca; padding:20px;" class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 col-xxl-9">
                 @using (Html.BeginForm("Outboxda", "Outboxda", FormMethod.Get))
                 {
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">Alıcı VKN: &emsp;</span>
                                 <input style="width: 75%; height:30px;" type="text" class="form-control" name="receiver_vn" aria-label="receiver_vn" aria-describedby="basic-addon1">
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">Alıcı Adı:</span>
                                 <input style="width: 75%; height:30px;" type="text" class="form-control" name="receiver" aria-label="receiver" aria-describedby="basic-addon1">
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">Senaryo: &emsp;</span>
                                 <select style="width: 75%; height: 30px; border-color: #cccccc; " class="form-select" name="profile" aria-label="profile">
@@ -41,21 +41,21 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">Gönderen VKN: </span>
                                 <input style="width: 75%; height: 30px;" type="text" class="form-control" name="sender_vn" aria-label="sender_vn" aria-describedby="basic-addon1">
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">Gönderen Adı:</span>
                                 <input style="width: 75%; height: 30px;" type="text" class="form-control" name="sender" aria-label="sender" aria-describedby="basic-addon1">
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">Belge Tipi: &emsp;</span>
                                 <select style="width: 75%; height: 30px; border-color: #cccccc; " class="form-select" name="type" aria-label="type">
@@ -71,13 +71,13 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">GIB Durumu: &emsp;</span>
                                 <input style="width: 75%; height: 30px;" type="text" class="form-control" name="gib_status" aria-label="gib_status" aria-describedby="basic-addon1">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" name="issue_date" id="basic-addon1">İrsaliye Tarihi:&emsp;</span>
                                 <input style="width: min-content; border-color: #cccccc; border-style:solid; border-width:thin; " type="date" id="start" name="start_date"
@@ -89,8 +89,8 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                            <button style="padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; width: auto; height: 30px; margin-left: 58%; margin-right: 10%; " type="submit" class="btn btn-dark">Sorgula</button>
+                        <div class="col-md-4 col-sm-5">
+                            <button style="padding-right: 30px; padding-left: 30px; padding-top: 5px; padding-bottom: 5px; width: fit-content; height: 30px; margin-left: 58%; margin-right: 10%; " type="submit" class="btn btn-dark">Sorgula</button>
                         </div>
                     </div>
 
@@ -99,7 +99,7 @@
 
             @*<div style="border-left: 1px solid black; height: auto"></div>*@
 
-            <div style="border: 1px solid #cacaca; padding: 20px; " class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 ">
+            <div style="border: 1px solid #cacaca; padding: 20px; " class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3 ">
                 @using (Html.BeginForm("Outboxda", "Outboxda", FormMethod.Post))
                 {
                     <div class="input-group mb-2">
@@ -145,6 +145,33 @@
                                 </thead>
                                 i++;
                             }
+
+                            @*----------------------------------------------*@
+                            using (Html.BeginForm("ViewInvoice", "Outboxda", FormMethod.Post))
+                            {
+                                <!-- Modal -->
+                                <div style="width:auto; height:auto;" class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">@dr["number"].ToString()</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @dr["xmlcontent"]
+                                                @*@Html.Action("ViewInvoice", "Outboxda")*@
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-dark" data-dismiss="modal">Kapat</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            @*----------------------------------------------*@
+
                     <tr>
                         <td class="column"><input name="sec" type="checkbox"></td>
                         <td class="column">@dr["number"].ToString()</td>
@@ -196,16 +223,17 @@
                                 <td class="column"></td>
                             }
                         }
-                        <td class="column"><a href="#"><i class="far fa-eye"></i></a></td>
+                        <td class="column"><a href="Outboxda/ViewInvoice?xmlcontent=@dr["xmlcontent"]&box=null&encoded=true&removePreambles=false&barcode=null&showAttachments=false" data-toggle="modal" data-target="#exampleModalLong"><i class="far fa-eye"></i></a></td>
+                        @*<td class="column"><a href="Outboxda/ViewInvoice?xmlcontent=@dr["xmlcontent"]" data-toggle="modal" data-target="#exampleModalLong"><i class="far fa-eye"></i></a></td>*@
                     </tr>
                         }
-
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @{
     int k = 1;
 }
@@ -258,6 +286,12 @@
         var blob = new Blob([tab_text], { type: "application/vnd.ms-excel;charset=utf-8" })
         window.saveAs(blob, fileName);
     }
+
+
+
+
+
+
 
 </script>
 

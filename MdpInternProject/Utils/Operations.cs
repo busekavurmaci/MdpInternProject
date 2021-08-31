@@ -9,11 +9,24 @@ using System.Security.Cryptography;
 using System.Text;
 using Saxon.Api;
 using System.Diagnostics;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
+using Mdp.Entities;
 
 namespace MdpInternProject.Utils
 {
-    public class Transformer
+    public class Operations
     {
+
+        public static string ConnectionString
+        {
+            get
+            {
+                return ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            }
+        }
+
         private static string decodeFrom64(string encodedData)
         {
             byte[] encodedDataAsBytes = System.Convert.FromBase64String(encodedData);
@@ -23,10 +36,40 @@ namespace MdpInternProject.Utils
 
         public static string TransformXMLToHTML(string inputXmlString, string box, Boolean encoded, bool removePreambles, string barcode, bool showAttachments)
         {
-            //removePreambless -- false
-            //showAtt -- false
-            
-            if (encoded)
+
+            outbox_da outboxda = new outbox_da();
+
+            encoded = true;
+            removePreambles = false;
+            showAttachments = false;
+
+            SqlConnection sqlcon = new SqlConnection(ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+
+            if (inputXmlString != null && inputXmlString.Length > 0 && box != null && barcode != null)
+            {
+                for (int i = 0; i < inputXmlString.Length; i++)
+                {
+                    if (inputXmlString != null) //-- null parametreleri ekleme
+                        cmd.Parameters.AddWithValue(inputXmlString, outboxda.xmlcontent);
+                }
+
+                for (int i = 0; i < box.Length; i++)
+                {
+                    if (box != null) //-- null parametreleri ekleme
+                        cmd.Parameters.AddWithValue(box, box);
+                }
+
+                for (int i = 0; i < barcode.Length; i++)
+                {
+                    if (barcode != null) //-- null parametreleri ekleme
+                        cmd.Parameters.AddWithValue(barcode, barcode);
+                }
+
+            }
+            //----------------------------------
+
+            if (encoded==true)
                 inputXmlString = decodeFrom64(inputXmlString);
 
             XmlDocument invXml = new XmlDocument { PreserveWhitespace = true };
