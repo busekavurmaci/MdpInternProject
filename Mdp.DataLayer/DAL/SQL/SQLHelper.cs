@@ -32,95 +32,95 @@ namespace Mdp.DataLayer.DAL.SQL
         }
 
 
-        //public static string GetDataItem(string queryText, string[] parameterNames, object[] parameterValues, CommandType commandType)
-        //{
-        //    string returnValue = "";
-        //    SqlConnection cnn = new SqlConnection(ConnectionString);
+        public static string GetDataItem(string queryText, string[] parameterNames, object[] parameterValues, CommandType commandType)
+        {
+            string returnValue = "";
+            SqlConnection cnn = new SqlConnection(ConnectionString);
 
-        //    SqlCommand cmd = new SqlCommand(queryText, cnn);
-        //    cmd.CommandType = commandType;
+            SqlCommand cmd = new SqlCommand(queryText, cnn);
+            cmd.CommandType = commandType;
 
-        //    if (parameterNames != null && parameterNames.Length > 0)
-        //    {
-        //        for (int i = 0; i < parameterNames.Length; i++)
-        //        {
-        //            cmd.Parameters.AddWithValue(parameterNames[i], parameterValues[i]);
-        //        }
-        //    }
+            if (parameterNames != null && parameterNames.Length > 0)
+            {
+                for (int i = 0; i < parameterNames.Length; i++)
+                {
+                    cmd.Parameters.AddWithValue(parameterNames[i], parameterValues[i]);
+                }
+            }
 
-        //    try
-        //    {
-        //        cnn.Open();
-        //        returnValue = Convert.ToString(cmd.ExecuteScalar());
+            try
+            {
+                cnn.Open();
+                returnValue = Convert.ToString(cmd.ExecuteScalar());
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        if (cnn.State == ConnectionState.Open)
-        //        {
-        //            cnn.Close();
-        //        }
-        //    }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
 
-        //    return returnValue;
-        //}
+            return returnValue;
+        }
 
         ////--------------------------------------------------------
-        //public static T GetDataItem<T>(string queryText, string[] parameterNames, object[] parameterValues, CommandType commandType) where T : class, IBusinessEntity, new()
-        //{
+        public static T GetDataItem<T>(string queryText, string[] parameterNames, object[] parameterValues, CommandType commandType) where T : class, IBusinessEntity, new()
+        {
 
-        //    SqlConnection cnn = new SqlConnection(ConnectionString);
+            SqlConnection cnn = new SqlConnection(ConnectionString);
 
-        //    SqlCommand cmd = new SqlCommand(queryText, cnn);
-        //    cmd.CommandType = commandType;
+            SqlCommand cmd = new SqlCommand(queryText, cnn);
+            cmd.CommandType = commandType;
 
-        //    if (parameterNames != null && parameterNames.Length > 0)
-        //    {
-        //        for (int i = 0; i < parameterNames.Length; i++)
-        //        {
-        //            cmd.Parameters.AddWithValue(parameterNames[i], parameterValues[i]);
-        //        }
-        //    }
+            if (parameterNames != null && parameterNames.Length > 0)
+            {
+                for (int i = 0; i < parameterNames.Length; i++)
+                {
+                    cmd.Parameters.AddWithValue(parameterNames[i], parameterValues[i]);
+                }
+            }
 
-        //    T dataItem = new T();
+            T dataItem = new T();
 
-        //    try
-        //    {
-        //        cnn.Open();
+            try
+            {
+                cnn.Open();
 
-        //        using (SqlDataReader reader = cmd.ExecuteReader())
-        //        {
-        //            if (reader != null && reader.HasRows)
-        //            {
-        //                if (reader.Read())
-        //                    dataItem.Fill(reader);
-        //                else
-        //                    dataItem = null;
-        //            }
-        //            else
-        //            {
-        //                dataItem = null;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        if (cnn.State == ConnectionState.Open)
-        //        {
-        //            cnn.Close();
-        //        }
-        //    }
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader != null && reader.HasRows)
+                    {
+                        if (reader.Read())
+                            dataItem.Fill(reader);
+                        else
+                            dataItem = null;
+                    }
+                    else
+                    {
+                        dataItem = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
+                }
+            }
 
-        //    return dataItem;
-        //}
+            return dataItem;
+        }
 
         ////--------------------------------------------------------
         //public static List<T> GetDataItems<T>(string queryText, string[] parameterNames, object[] parameterValues, CommandType commandType) where T : IBusinessEntity, new()

@@ -160,8 +160,9 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                @dr["xmlcontent"]
-                                                @*@Html.Action("ViewInvoice", "Outboxda")*@
+                                                @*@dr["xmlcontent"]*@
+                                                @* @Html.Action("ViewInvoice", "Outboxda")*@
+                                                @Html.Partial("Show")
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-dark" data-dismiss="modal">Kapat</button>
@@ -223,7 +224,7 @@
                                 <td class="column"></td>
                             }
                         }
-                        <td class="column"><a href="Outboxda/ViewInvoice?xmlcontent=@dr["xmlcontent"]&box=null&encoded=true&removePreambles=false&barcode=null&showAttachments=false" data-toggle="modal" data-target="#exampleModalLong"><i class="far fa-eye"></i></a></td>
+                        <td class="column"><a href="Show?uuid=@dr["uuid"]" data-toggle="modal" data-target="#exampleModalLong"><i class="far fa-eye"></i></a></td>
                         @*<td class="column"><a href="Outboxda/ViewInvoice?xmlcontent=@dr["xmlcontent"]" data-toggle="modal" data-target="#exampleModalLong"><i class="far fa-eye"></i></a></td>*@
                     </tr>
                         }

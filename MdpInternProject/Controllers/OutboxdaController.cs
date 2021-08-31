@@ -39,23 +39,18 @@ namespace MdpInternProject.Controllers
 
         }
 
-        [HttpPost]
-        public ActionResult ViewInvoice(string xmlcontent, string box, Boolean encoded, bool removePreambles, string barcode, bool showAttachments)
+        [HttpGet]
+        public ActionResult Show(string uuid)
         {
-            outbox_da outboxda = new outbox_da();
+            var xmlcontent = outbox_da.GetXmlContent(uuid);
 
-            XmlDocument doc = new XmlDocument();
-            doc.Load(Server.MapPath(xmlcontent));
-
-            outboxda.xmlcontent = xmlcontent;
-            encoded = true;
-            removePreambles = false;
-            showAttachments = false;
-            //box = null;
-            //barcode = null;
+            var encoded = true;
+            var removePreambles = false;
+            var showAttachments = false;
             
-            var s = Operations.TransformXMLToHTML(xmlcontent, box, encoded, removePreambles, barcode, showAttachments);
-            return View(s);
+            var HtmlString = Operations.TransformXMLToHTML(xmlcontent, "outbox_da", encoded, removePreambles, "", showAttachments);
+            ViewBag.HtmlString = HtmlString;
+            return View();
 
             //XmlDocument xmldc = new XmlDocument(xmlcontent);
             //return View(xmldc);

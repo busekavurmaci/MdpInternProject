@@ -116,12 +116,14 @@ iframe {
         table td, table th {
             text-align: center;
             padding-left: 8px;
+            border-bottom: 0.3px solid grey;
         }
 
-        table thead tr {
-            height: 60px;
-            background: #000000;
-        }
+
+            table thead tr {
+                height: 60px;
+                background: #000000;
+            }
 
         table tbody tr {
             height: 50px;
@@ -226,7 +228,7 @@ iframe {
                     top: 0;
                 }
 
-                table tbody tr td:nth-child(1):before {
+                /*table tbody tr td:nth-child(1):before {
                     content: "Date";
                 }
 
@@ -248,7 +250,7 @@ iframe {
 
                 table tbody tr td:nth-child(6):before {
                     content: "Total";
-                }
+                }*/
 
     .column4,
     .column5,

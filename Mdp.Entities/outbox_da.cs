@@ -2,16 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Mdp.Entities
 {
-    public class outbox_da
+    public class outbox_da : IBusinessEntity
     {
 
-        public int id { get; set; }
+        public Int64 id { get; set; }
         public string number { get; set; }
         public Guid uuid { get; set; }
         public DateTime issue_date { get; set; }
@@ -85,6 +86,15 @@ namespace Mdp.Entities
         }
         //----------------------------------------------
 
+
+        public void Fill(SqlDataReader reader)
+        {
+            id = Convert.ToInt64(reader["id"]);
+            number = Convert.ToString(reader["number"]);
+
+            //
+        }
+
         public static DataTable GetDataTable2(string number)
         {
             string sql = "SELECT * FROM outbox_da WHERE 1=1 ";
@@ -98,6 +108,17 @@ namespace Mdp.Entities
 
             return SQLHelper.GetDataTable2(sql, new string[] { "@number"}, new object[] { number });
         }
+
+        public static outbox_da Get(string uuid)
+        {
+            return SQLHelper.GetDataItem<outbox_da>("SELECT * FROM outbox_da WHERE uuid=@uuid", new string[] { "@uuid" }, new object[] { uuid }, CommandType.Text);
+        }
+
+        public static string GetXmlContent(string uuid)
+        {
+            return SQLHelper.GetDataItem("SELECT xmlcontent FROM outbox_da WHERE uuid=@uuid", new string[] { "@uuid" }, new object[] { uuid }, CommandType.Text);
+        }
+
 
     }
 }
