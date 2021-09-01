@@ -20,6 +20,13 @@ namespace MdpInternProject.Controllers
 
             DataTable dt = outbox_da.GetDataTable(profile, type, sender, sender_vn, receiver, receiver_vn, start_date, end_date, issue_date, gib_status);
 
+            ViewBag.profile = profile;
+            ViewBag.type = type;
+            ViewBag.sender = sender;
+            ViewBag.sender_vn = sender_vn;
+            ViewBag.receiver = receiver;
+            ViewBag.receiver_vn = receiver_vn;
+            ViewBag.gib_status = gib_status;
 
             ViewBag.TotalResults = dt.Rows.Count;
 
