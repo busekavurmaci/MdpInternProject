@@ -29,7 +29,14 @@ namespace MdpInternProject.Utils
 
         private static string decodeFrom64(string encodedData)
         {
-            byte[] encodedDataAsBytes = System.Convert.FromBase64String(encodedData);  //error
+            string _byteOrderMarkUtf8 = Encoding.UTF8.GetString(Encoding.UTF8.GetPreamble());
+            if (encodedData.StartsWith(_byteOrderMarkUtf8))
+            {
+                encodedData = encodedData.Remove(0, _byteOrderMarkUtf8.Length);
+            }
+
+            byte[] encodedDataAsBytes = System.Convert.FromBase64String(encodedData);  //iframeden dolayı hata veriyor
+
             string returnValue = System.Text.Encoding.UTF8.GetString(encodedDataAsBytes);
             return returnValue;
         }
