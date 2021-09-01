@@ -20,6 +20,7 @@ namespace MdpInternProject.Controllers
 
             DataTable dt = outbox_da.GetDataTable(profile, type, sender, sender_vn, receiver, receiver_vn, start_date, end_date, issue_date, gib_status);
 
+
             ViewBag.TotalResults = dt.Rows.Count;
 
             return View(dt);
@@ -51,9 +52,6 @@ namespace MdpInternProject.Controllers
             var HtmlString = Operations.TransformXMLToHTML(xmlcontent, "outbox_da", encoded, removePreambles, "", showAttachments);
             ViewBag.HtmlString = HtmlString;
             return View();
-
-            //XmlDocument xmldc = new XmlDocument(xmlcontent);
-            //return View(xmldc);
         }
 
     }

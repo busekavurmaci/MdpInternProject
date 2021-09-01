@@ -14,7 +14,7 @@ namespace Mdp.Entities
 
         public Int64 id { get; set; }
         public string number { get; set; }
-        public Guid uuid { get; set; }
+        public string uuid { get; set; }
         public DateTime issue_date { get; set; }
         public DateTime issue_time { get; set; }
         public DateTime desp_date { get; set; }
@@ -29,10 +29,10 @@ namespace Mdp.Entities
         public Int16 status { get; set; }
         public Int16 cor_status { get; set; }
         public DateTime insert_date { get; set; }
-        public Guid sbd_uuid { get; set; }
+        public string sbd_uuid { get; set; }
         public Int16 sbd_element_id { get; set; }
         public short gib_status { get; set; }
-        public Guid bar_uuid { get; set; }
+        public string bar_uuid { get; set; }
         public string bar_respcode { get; set; }
         public DateTime sr_date { get; set; }
         public byte d { get; set; }

@@ -228,42 +228,8 @@ iframe {
                     top: 0;
                 }
 
-                /*table tbody tr td:nth-child(1):before {
-                    content: "Date";
-                }
-
-                table tbody tr td:nth-child(2):before {
-                    content: "Order ID";
-                }
-
-                table tbody tr td:nth-child(3):before {
-                    content: "Name";
-                }
-
-                table tbody tr td:nth-child(4):before {
-                    content: "Price";
-                }
-
-                table tbody tr td:nth-child(5):before {
-                    content: "Quantity";
-                }
-
-                table tbody tr td:nth-child(6):before {
-                    content: "Total";
-                }*/
-
-    .column4,
-    .column5,
-    .column6 {
+    .column {
         text-align: left;
-    }
-
-    .column4,
-    .column5,
-    .column6,
-    .column1,
-    .column2,
-    .column3 {
         width: 100%;
     }
 
@@ -279,7 +245,4 @@ iframe {
         }
     }
 
-.srtbl-qt {
-    text-align: left;
-    padding-right:100px;
-}
+

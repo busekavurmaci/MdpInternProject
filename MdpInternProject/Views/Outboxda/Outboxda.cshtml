@@ -4,6 +4,9 @@
 @{
     ViewBag.Title = " Gönderilmiş İrsaliye";
 }
+
+
+
 <div>
     <h3>Gönderilmiş e-İrsaliye</h3>
     <div style="padding:1px; margin-left:1px; margin-right:1px; max-width:max-content;" id="formid" class="container">
@@ -81,7 +84,7 @@
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" name="issue_date" id="basic-addon1">İrsaliye Tarihi:&emsp;</span>
                                 <input style="width: min-content; border-color: #cccccc; border-style:solid; border-width:thin; " type="date" id="start" name="start_date"
-                                       value="@DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd")"
+                                       value="@DateTime.Now.AddMonths(-19).ToString("yyyy-MM-dd")"
                                        min="2014-01-01" max="@DateTime.Now.ToString("yyyy-MM-dd")"> &nbsp;
                                 <input style="width: auto; border-color: #cccccc; border-style: solid; border-width: thin; " type="date" id="end" name="end_date"
                                        value="@DateTime.Now.ToString("yyyy-MM-dd")"
@@ -96,8 +99,6 @@
 
                 }
             </div>
-
-            @*<div style="border-left: 1px solid black; height: auto"></div>*@
 
             <div style="border: 1px solid #cacaca; padding: 20px; " class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3 ">
                 @using (Html.BeginForm("Outboxda", "Outboxda", FormMethod.Post))
@@ -141,37 +142,12 @@
                                         <th class="column">Senaryo</th>
                                         <th class="column">GIB Durumu</th>
                                         <th class="column">Görüntüle</th>
+                                        <th class="column">İndir</th>
                                     </tr>
                                 </thead>
                                 i++;
                             }
 
-                            @*----------------------------------------------*@
-                            using (Html.BeginForm("ViewInvoice", "Outboxda", FormMethod.Post))
-                            {
-                                <!-- Modal -->
-                                <div style="width:auto; height:auto;" class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">@dr["number"].ToString()</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                @*@dr["xmlcontent"]*@
-                                                @* @Html.Action("ViewInvoice", "Outboxda")*@
-                                                @Html.Partial("Show")
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-dark" data-dismiss="modal">Kapat</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                            @*----------------------------------------------*@
 
                     <tr>
                         <td class="column"><input name="sec" type="checkbox"></td>
@@ -224,9 +200,41 @@
                                 <td class="column"></td>
                             }
                         }
-                        <td class="column"><a href="Show?uuid=@dr["uuid"]" data-toggle="modal" data-target="#exampleModalLong"><i class="far fa-eye"></i></a></td>
-                        @*<td class="column"><a href="Outboxda/ViewInvoice?xmlcontent=@dr["xmlcontent"]" data-toggle="modal" data-target="#exampleModalLong"><i class="far fa-eye"></i></a></td>*@
+                        <td class="column"><a data-toggle="modal" data-target="#MyModal-@dr["uuid"]"><i class="far fa-eye"></i></a></td>
+                        <td class="column"><a href="#"><i class="fas fa-download"></i></a></td>
+
                     </tr>
+
+                            @*----------------------------------------------*@
+                            using (Html.BeginForm("Show", "Outboxda", FormMethod.Get))
+                            {
+                                <!-- Modal -->
+                                <div style="height:auto;" class="modal fade" id=MyModal-@dr["uuid"] tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div id="draggable" style="width:fit-content;" class="modal-dialog" role="document">
+                                        <div style="width:fit-content;" class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">@dr["number"].ToString()</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="col-md-12">
+                                                    <div id="printThis">
+                                                        <iframe id="ifr" frameborder='0' src="Show?uuid=@dr["uuid"].ToString()" style="overflow-x:hidden; overflow-y:hidden; text-align:left; height:900px; width:900px; background:#F9FAF7"></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-dark" data-dismiss="modal">Kapat</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                            @*----------------------------------------------*@
                         }
                     </table>
                 </div>
@@ -261,10 +269,6 @@
         }
     }
 
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-
     function fnExcelReport(id, name) {
         var tab_text = '<html xmlns: x="urn:schemas-microsoft-com:office:excel">';
         tab_text = tab_text + '<head><xml><x: ExcelWorkbook><x: ExcelWorksheets><x: ExcelWorksheet>';
@@ -289,10 +293,9 @@
     }
 
 
-
-
-
+    $(function () {
+        $("#draggable").draggable();
+    });
 
 
 </script>
-

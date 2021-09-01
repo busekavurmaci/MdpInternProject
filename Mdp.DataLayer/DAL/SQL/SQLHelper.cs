@@ -20,17 +20,14 @@ namespace Mdp.DataLayer.DAL.SQL
 
     public class SQLHelper
     {
-        
         public static string ConnectionString
-        {
-            
+        { 
         get
             {
                 //return "Data Source = localhost; Initial Catalog = efaturatest; Integrated Security=true";
                 return ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;  //web.config'den alındı.
             }
         }
-
 
         public static string GetDataItem(string queryText, string[] parameterNames, object[] parameterValues, CommandType commandType)
         {
@@ -52,7 +49,6 @@ namespace Mdp.DataLayer.DAL.SQL
             {
                 cnn.Open();
                 returnValue = Convert.ToString(cmd.ExecuteScalar());
-
             }
             catch (Exception ex)
             {
@@ -65,7 +61,6 @@ namespace Mdp.DataLayer.DAL.SQL
                     cnn.Close();
                 }
             }
-
             return returnValue;
         }
 
