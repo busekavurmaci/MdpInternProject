@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace efatura.Tools
+namespace MdpInternProject.Utils
 {
     public class PdfGenerator
     {

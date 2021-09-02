@@ -27,7 +27,7 @@ namespace MdpInternProject.Utils
             }
         }
 
-        private static string decodeFrom64(string encodedData)
+        private static string decodeFrom64(string encodedData)  //private olmalı
         {
             byte[] encodedDataAsBytes = System.Convert.FromBase64String(encodedData);  //error
             string returnValue = System.Text.Encoding.UTF8.GetString(encodedDataAsBytes);

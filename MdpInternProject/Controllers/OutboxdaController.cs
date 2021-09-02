@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using Mdp.Entities;
 using MdpInternProject.Utils;
 using System.Xml;
+using System.Text;
 
 namespace MdpInternProject.Controllers
 {
@@ -54,13 +55,39 @@ namespace MdpInternProject.Controllers
             var encoded = true;
             var removePreambles = false;
             var showAttachments = false;
-            
+
             var HtmlString = Operations.TransformXMLToHTML(xmlcontent, "outbox_da", encoded, removePreambles, "", showAttachments);
             ViewBag.HtmlString = HtmlString;
             return View();
         }
 
+        public ActionResult PrintInvoicePdf(string uuid)
+        {
+            var xmlcontent = outbox_da.GetXmlContent(uuid);
+
+            return View();
 
         }
+
+        //public string PrintInvoiceXml(string uuid)
+        //{
+        //    var xmlcontent = outbox_da.GetXmlContent(uuid);
+        //    string xmlString = xmlcontent.ToString();
+        //    return xmlString;
+        //}
+
+        public FileResult PrintInvoiceXml(string uuid)
+        {
+            var xmlcontent = outbox_da.GetXmlContent(uuid);
+
+            //XmlDocument xml = new XmlDocument();
+            //xml.Load(xmlcontent);
+            
+            string fileName = uuid + ".xml";
+
+            return File(xmlcontent, "application/xml", fileName);
+        }
+
+    }
 }
     
