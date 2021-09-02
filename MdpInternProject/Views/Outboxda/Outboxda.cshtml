@@ -142,7 +142,7 @@
                                         <th class="column">Senaryo</th>
                                         <th class="column">GIB Durumu</th>
                                         <th class="column">Görüntüle</th>
-                                        <th class="column">İndir</th>
+                                        <th style="width:60px;" class="column">İndir</th>
                                     </tr>
                                 </thead>
                                 i++;
@@ -201,8 +201,10 @@
                             }
                         }
                         <td class="column"><a data-toggle="modal" data-target="#MyModal-@dr["uuid"]"><i class="far fa-eye"></i></a></td>
-                        <td class="column"><a href="#"><i class="fas fa-download"></i></a></td>
-
+                        <td class="column">
+                        <a href="#"><i class="far fa-file-pdf" data-toggle="tooltip" data-original-title="pdf indir"></i></a>
+                        <a href="#"><i class="far fa-file-code" data-toggle="tooltip" data-original-title="xml indir"></i></a>
+                        </td>
                     </tr>
 
                             @*----------------------------------------------*@
@@ -293,9 +295,10 @@
     }
 
 
-    $(function () {
-        $("#draggable").draggable();
-    });
 
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip({
+            placement: 'bottom'
+        });
 
 </script>
