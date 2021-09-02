@@ -13,7 +13,6 @@ namespace MdpInternProject.Controllers
 {
     public class OutboxdaController : Controller
     {
-
         [HttpGet]
         public ActionResult Outboxda(string profile, string type, string sender, string sender_vn, string receiver, string receiver_vn, string start_date, string end_date, DateTime? issue_date, short? gib_status)
         {
@@ -61,6 +60,7 @@ namespace MdpInternProject.Controllers
             return View();
         }
 
-    }
+
+        }
 }
     

@@ -18,21 +18,21 @@
                         <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">Alıcı VKN: &emsp;</span>
-                                <input style="width: 75%; height:30px;" type="text" class="form-control" name="receiver_vn" value="@ViewBag.receiver_vn" aria-label="receiver_vn" aria-describedby="basic-addon1">
+                                <input style="width: 75%; height:30px;" type="text" class="form-control" name="receiver_vn" aria-label="receiver_vn" aria-describedby="basic-addon1">
                             </div>
                         </div>
 
                         <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">Alıcı Adı:</span>
-                                <input style="width: 75%; height:30px;" type="text" class="form-control" name="receiver" value="@ViewBag.receiver" aria-label="receiver" aria-describedby="basic-addon1">
+                                <input style="width: 75%; height:30px;" type="text" class="form-control" name="receiver" aria-label="receiver" aria-describedby="basic-addon1">
                             </div>
                         </div>
 
                         <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">Senaryo: &emsp;</span>
-                                <select style="width: 75%; height: 30px; border-color: #cccccc; " class="form-select" name="profile" value="@ViewBag.profile" aria-label="profile">
+                                <select style="width: 75%; height: 30px; border-color: #cccccc; " class="form-select" name="profile" aria-label="profile">
                                     <option selected>TÜMÜ</option>
                                     <option value="TEMELFATURA">TEMEL FATURA</option>
                                     <option value="TICARIFATURA">TİCARİ FATURA</option>
@@ -47,21 +47,21 @@
                         <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">Gönderen VKN: </span>
-                                <input style="width: 75%; height: 30px;" type="text" class="form-control" name="sender_vn" value="@ViewBag.sender_vn" aria-label="sender_vn" aria-describedby="basic-addon1">
+                                <input style="width: 75%; height: 30px;" type="text" class="form-control" name="sender_vn" aria-label="sender_vn" aria-describedby="basic-addon1">
                             </div>
                         </div>
 
                         <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" id="basic-addon1">Gönderen Adı:</span>
-                                <input style="width: 75%; height: 30px;" type="text" class="form-control" name="sender" value="@ViewBag.sender" aria-label="sender" aria-describedby="basic-addon1">
+                                <input style="width: 75%; height: 30px;" type="text" class="form-control" name="sender" aria-label="sender" aria-describedby="basic-addon1">
                             </div>
                         </div>
 
                         <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">Belge Tipi: &emsp;</span>
-                                <select style="width: 75%; height: 30px; border-color: #cccccc; " class="form-select" name="type" value="@ViewBag.type" aria-label="type">
+                                <select style="width: 75%; height: 30px; border-color: #cccccc; " class="form-select" name="type" aria-label="type">
                                     <option selected>TÜMÜ</option>
                                     <option value="SEVK">SEVK</option>
                                     <option value="SATIS">SATIŞ</option>
@@ -77,14 +77,14 @@
                         <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px;" class="input-group-text" id="basic-addon1">GIB Durumu: &emsp;</span>
-                                <input style="width: 75%; height: 30px;" type="text" class="form-control" name="gib_status" value="@ViewBag.gib_status" aria-label="gib_status" aria-describedby="basic-addon1">
+                                <input style="width: 75%; height: 30px;" type="text" class="form-control" name="gib_status" aria-label="gib_status" aria-describedby="basic-addon1">
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4">
                             <div class="input-group mb-2">
                                 <span style="padding-top: 6px; padding-bottom: 6px; width: 120px; height: 30px; white-space: nowrap;" class="input-group-text" name="issue_date" id="basic-addon1">İrsaliye Tarihi:&emsp;</span>
                                 <input style="width: min-content; border-color: #cccccc; border-style:solid; border-width:thin; " type="date" id="start" name="start_date"
-                                       value="@DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd")"
+                                       value="@DateTime.Now.AddMonths(-19).ToString("yyyy-MM-dd")"
                                        min="2014-01-01" max="@DateTime.Now.ToString("yyyy-MM-dd")"> &nbsp;
                                 <input style="width: auto; border-color: #cccccc; border-style: solid; border-width: thin; " type="date" id="end" name="end_date"
                                        value="@DateTime.Now.ToString("yyyy-MM-dd")"
@@ -209,29 +209,30 @@
                             using (Html.BeginForm("Show", "Outboxda", FormMethod.Get))
                             {
                                 <!-- Modal -->
-                        <div style="height:auto;" class="modal fade" id=MyModal-@dr["uuid"] tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                            <div style="width:fit-content;" class="modal-dialog" role="document">
-                                <div style="width:fit-content;" class="modal-content">
-                                    <div class="modal-header" style="cursor: move;">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">@dr["number"].ToString()</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+                                <div style="height:auto;" class="modal fade" id=MyModal-@dr["uuid"] tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div id="draggable" style="width:fit-content;" class="modal-dialog" role="document">
+                                        <div style="width:fit-content;" class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">@dr["number"].ToString()</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
 
-                                    <div class="modal-body">
-                                        <div class="col-md-12">
-                                            <div id="printThis">
-                                                @*<iframe id="ifr" frameborder='0' src="Show?uuid=@dr["uuid"].ToString()" style="overflow-x:hidden; overflow-y:hidden; text-align:left; height:900px; width:900px; background:#F9FAF7"></iframe>*@
+                                            <div class="modal-body">
+                                                <div class="col-md-12">
+                                                    <div id="printThis">
+                                                        <iframe id="ifr" frameborder='0' src="Show?uuid=@dr["uuid"].ToString()" style="overflow-x:hidden; overflow-y:hidden; text-align:left; height:900px; width:900px; background:#F9FAF7"></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-dark" data-dismiss="modal">Kapat</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Kapat</button>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
+
                             }
                             @*----------------------------------------------*@
                         }
@@ -292,33 +293,9 @@
     }
 
 
-    //$("#myModal").draggable({
-    //    handle: ".modal-header"
-    //});
-
-    $(".modal-dialog").draggable({
-        handle: ".modal-header"
+    $(function () {
+        $("#draggable").draggable();
     });
-
-    //$(".modal").modal("show");
-
-    //$(".modal-header").on("mousedown", function (mousedownEvt) {
-    //    var $draggable = $(this);
-    //    var x = mousedownEvt.pageX - $draggable.offset().left,
-    //        y = mousedownEvt.pageY - $draggable.offset().top;
-    //    $("body").on("mousemove.draggable", function (mousemoveEvt) {
-    //        $draggable.closest(".modal-dialog").offset({
-    //            "left": mousemoveEvt.pageX - x,
-    //            "top": mousemoveEvt.pageY - y
-    //        });
-    //    });
-    //    $("body").one("mouseup", function () {
-    //        $("body").off("mousemove.draggable");
-    //    });
-    //    $draggable.closest(".modal").one("bs.modal.hide", function () {
-    //        $("body").off("mousemove.draggable");
-    //    });
-    //});
 
 
 </script>
