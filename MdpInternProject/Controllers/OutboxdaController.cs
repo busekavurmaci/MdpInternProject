@@ -9,6 +9,8 @@ using Mdp.Entities;
 using MdpInternProject.Utils;
 using System.Xml;
 using System.Text;
+using System.IO;
+using Rotativa.MVC;
 
 namespace MdpInternProject.Controllers
 {
@@ -50,6 +52,7 @@ namespace MdpInternProject.Controllers
         [HttpGet]
         public ActionResult Show(string uuid)
         {
+
             var xmlcontent = outbox_da.GetXmlContent(uuid);
 
             var encoded = true;
@@ -57,36 +60,39 @@ namespace MdpInternProject.Controllers
             var showAttachments = false;
 
             var HtmlString = Operations.TransformXMLToHTML(xmlcontent, "outbox_da", encoded, removePreambles, "", showAttachments);
-            ViewBag.HtmlString = HtmlString;
+            if (uuid != null) { 
+                ViewBag.HtmlString = HtmlString;
+            }
             return View();
         }
+
+
+        //public FileResult PrintInvoiceXml(string uuid)
+        //{
+        //    var xmlcontent = outbox_da.GetXmlContent(uuid);
+        //    string fileName = uuid + ".xml";
+        //    return File(xmlcontent, "application/xml", fileName);
+        //}
+
 
         public ActionResult PrintInvoicePdf(string uuid)
         {
-            var xmlcontent = outbox_da.GetXmlContent(uuid);
-
-            return View();
-
-        }
-
-        //public string PrintInvoiceXml(string uuid)
-        //{
-        //    var xmlcontent = outbox_da.GetXmlContent(uuid);
-        //    string xmlString = xmlcontent.ToString();
-        //    return xmlString;
-        //}
-
-        public FileResult PrintInvoiceXml(string uuid)
-        {
-            var xmlcontent = outbox_da.GetXmlContent(uuid);
-
-            //XmlDocument xml = new XmlDocument();
-            //xml.Load(xmlcontent);
             
-            string fileName = uuid + ".xml";
+            //var q = new ActionAsPdf("Show", uuid);
+            //    return q;
 
-            return File(xmlcontent, "application/xml", fileName);
+            //var root = Server.MapPath("~/PDF/");
+            //var pdfname = String.Format("{0}.pdf", Guid.NewGuid().ToString());
+            //var path = Path.Combine(root, pdfname);
+            //path = Path.GetFullPath(path);
+
+            var report = new ActionAsPdf("Show", uuid) { FileName = "invoice.pdf"};
+
+            //var report = new Rotativa.ActionAsPdf("Show", uuid);
+            return report;
         }
+
+
 
     }
 }

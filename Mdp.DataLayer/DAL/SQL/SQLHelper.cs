@@ -31,19 +31,36 @@ namespace Mdp.DataLayer.DAL.SQL
 
         public static string GetDataItem(string queryText, string[] parameterNames, object[] parameterValues, CommandType commandType)
         {
+            
+
             string returnValue = "";
             SqlConnection cnn = new SqlConnection(ConnectionString);
 
             SqlCommand cmd = new SqlCommand(queryText, cnn);
             cmd.CommandType = commandType;
 
+
+
+            //if (parameterNames != null && parameterNames.Length > 0)
+            //    {
+            //    for (int i = 0; i < parameterNames.Length; i++)
+            //    {
+            //        cmd.Parameters.AddWithValue(parameterNames[i], parameterValues[i]);
+            //    }
+            //}
+
+
+            //------------------------------------------
             if (parameterNames != null && parameterNames.Length > 0)
             {
                 for (int i = 0; i < parameterNames.Length; i++)
                 {
-                    cmd.Parameters.AddWithValue(parameterNames[i], parameterValues[i]);
+                    if (parameterValues[i] != null) //-- null parametreleri ekleme
+                        cmd.Parameters.AddWithValue(parameterNames[i], parameterValues[i]);
                 }
             }
+            //------------------------------------------
+
 
             try
             {
