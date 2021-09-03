@@ -57,6 +57,8 @@ namespace MdpInternProject.Controllers
                         ViewBag.username = cerez["username"].ToString();
                     }
                 }
+                Session["username"] = userr.username.ToString();
+                Session["passwd"] = userr.passwd.ToString();
 
                 return RedirectToAction("Index", "Home");
             }
