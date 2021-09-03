@@ -10,6 +10,7 @@ using MdpInternProject.Utils;
 using System.Xml;
 using System.Text;
 using System.IO;
+using System.Xml.Serialization;
 using Rotativa.MVC;
 
 namespace MdpInternProject.Controllers
@@ -67,31 +68,20 @@ namespace MdpInternProject.Controllers
         }
 
 
-        //public FileResult PrintInvoiceXml(string uuid)
-        //{
-        //    var xmlcontent = outbox_da.GetXmlContent(uuid);
-        //    string fileName = uuid + ".xml";
-        //    return File(xmlcontent, "application/xml", fileName);
-        //}
-
-
+        [HttpGet]
         public ActionResult PrintInvoicePdf(string uuid)
         {
-            
-            //var q = new ActionAsPdf("Show", uuid);
-            //    return q;
-
-            //var root = Server.MapPath("~/PDF/");
-            //var pdfname = String.Format("{0}.pdf", Guid.NewGuid().ToString());
-            //var path = Path.Combine(root, pdfname);
-            //path = Path.GetFullPath(path);
-
-            var report = new ActionAsPdf("Show", uuid) { FileName = "invoice.pdf"};
-
-            //var report = new Rotativa.ActionAsPdf("Show", uuid);
+            var report = new ViewAsPdf("Show", uuid) { FileName = "waybill.pdf" };
             return report;
         }
 
+        public FileResult PrintInvoiceXml(string uuid)
+        {
+            var xmlcontent = outbox_da.GetXmlContent(uuid);
+            string filename = "waybill_"+ uuid + ".xml";
+            //return File(Encoding.UTF8.GetBytes(xmlcontent), "application/xml", "waybill.xml");
+            return File(Encoding.ASCII.GetBytes(xmlcontent), "application/xml", filename);
+        }
 
 
     }
