@@ -68,7 +68,7 @@ namespace MdpInternProject.Controllers
         }
 
 
-        [HttpGet]
+        //[HttpGet]
         public ActionResult PrintInvoicePdf(string uuid)
         {
             var report = new ViewAsPdf("Show", uuid) { FileName = "waybill.pdf" };
@@ -78,9 +78,15 @@ namespace MdpInternProject.Controllers
         public FileResult PrintInvoiceXml(string uuid)
         {
             var xmlcontent = outbox_da.GetXmlContent(uuid);
+
             string filename = "waybill_"+ uuid + ".xml";
+
+            byte[] encodedDataAsBytes = System.Convert.FromBase64String(xmlcontent);
+            string returnValue = System.Text.Encoding.UTF8.GetString(encodedDataAsBytes);
+
             //return File(Encoding.UTF8.GetBytes(xmlcontent), "application/xml", "waybill.xml");
-            return File(Encoding.ASCII.GetBytes(xmlcontent), "application/xml", filename);
+            //return File(Encoding.ASCII.GetBytes(xmlcontent), "application/xml", filename);
+            return File(Encoding.ASCII.GetBytes(returnValue), "application/xml", filename);
         }
 
 
