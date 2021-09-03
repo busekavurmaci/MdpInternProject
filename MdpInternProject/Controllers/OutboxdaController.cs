@@ -69,10 +69,28 @@ namespace MdpInternProject.Controllers
 
 
         //[HttpGet]
-        public ActionResult PrintInvoicePdf(string uuid)
+        public FileResult PrintInvoicePdf(string uuid)
         {
-            var report = new ViewAsPdf("Show", uuid) { FileName = "waybill.pdf" };
-            return report;
+            //var report = new ViewAsPdf("Show", uuid) { FileName = "waybill.pdf" };
+            //return report;
+            //if (uuid != null)
+            //{
+                var xmlcontent = outbox_da.GetXmlContent(uuid);
+                var encoded = true;
+                var removePreambles = false;
+                var showAttachments = false;
+
+                var HtmlString = Operations.TransformXMLToHTML(xmlcontent, "outbox_da", encoded, removePreambles, "", showAttachments);
+                string dir = "c:\\Windows\\temp\\";
+                string outputFileName = uuid + ".pdf";
+                string inputFileName = dir + uuid + ".html";
+
+                System.IO.File.WriteAllText(inputFileName, HtmlString,Encoding.UTF8);
+                PdfGenerator.HtmlToPdf(dir, outputFileName, inputFileName);
+
+            //}
+
+            return File(dir+outputFileName, "application/pdf", outputFileName);
         }
 
         public FileResult PrintInvoiceXml(string uuid)
@@ -84,8 +102,6 @@ namespace MdpInternProject.Controllers
             byte[] encodedDataAsBytes = System.Convert.FromBase64String(xmlcontent);
             string returnValue = System.Text.Encoding.UTF8.GetString(encodedDataAsBytes);
 
-            //return File(Encoding.UTF8.GetBytes(xmlcontent), "application/xml", "waybill.xml");
-            //return File(Encoding.ASCII.GetBytes(xmlcontent), "application/xml", filename);
             return File(Encoding.ASCII.GetBytes(returnValue), "application/xml", filename);
         }
 
