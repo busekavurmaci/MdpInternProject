@@ -470,7 +470,9 @@
     <Content Include="Views\Inboxda\Inboxda.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Outboxda\Show.cshtml" />
-    <Content Include="Views\Outboxda\denemepartial.cshtml" />
+    <Content Include="Views\Inboxda\Show.cshtml" />
+    <Content Include="Views\Inboxra\Show.cshtml" />
+    <Content Include="Views\Outboxra\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

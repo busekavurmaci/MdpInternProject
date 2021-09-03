@@ -2,16 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Mdp.Entities
 {
-    public class outbox_ra
+    public class outbox_ra : IBusinessEntity
     {
 
-        public int id { get; set; }
+        public Int64 id { get; set; }
         public string number { get; set; }
         public System.Guid uuid { get; set; }
         public DateTime issue_date { get; set; }
@@ -83,7 +84,13 @@ namespace Mdp.Entities
             return SQLHelper.GetDataTable(sql, new string[] { "@profile", "@type", "@sender", "@sender_vn", "@receiver_vn", "@receiver", "@start_date", "@end_date", "@gib_status" }, new object[] { profile, type, sender, sender_vn, receiver_vn, receiver, start_date, end_date, gib_status });
         }
         //----------------------------------------------
+        public void Fill(SqlDataReader reader)
+        {
+            id = Convert.ToInt64(reader["id"]);
+            number = Convert.ToString(reader["number"]);
 
+            //
+        }
         public static DataTable GetDataTable2(string number)
         {
             string sql = "SELECT * FROM outbox_ra WHERE 1=1 ";
@@ -98,5 +105,17 @@ namespace Mdp.Entities
             return SQLHelper.GetDataTable2(sql, new string[] { "@number" }, new object[] { number });
         }
 
+        public static outbox_ra Get(string uuid)
+        {
+            return SQLHelper.GetDataItem<outbox_ra>("SELECT * FROM outbox_ra WHERE uuid=@uuid", new string[] { "@uuid" }, new object[] { uuid }, CommandType.Text);
+        }
+
+        public static string GetXmlContent(string uuid)
+        {
+            return SQLHelper.GetDataItem("SELECT xmlcontent FROM outbox_ra WHERE uuid=@uuid", new string[] { "@uuid" }, new object[] { uuid }, CommandType.Text);
+        }
+
+
     }
 }
+

@@ -92,7 +92,6 @@ namespace Mdp.Entities
             id = Convert.ToInt64(reader["id"]);
             number = Convert.ToString(reader["number"]);
 
-            //
         }
 
         public static DataTable GetDataTable2(string number)
