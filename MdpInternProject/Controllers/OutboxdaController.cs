@@ -67,12 +67,8 @@ namespace MdpInternProject.Controllers
             return View();
         }
 
-
-        //[HttpGet]
         public FileResult PrintInvoicePdf(string uuid)
         {
-            //var report = new ViewAsPdf("Show", uuid) { FileName = "waybill.pdf" };
-            //return report;
             //if (uuid != null)
             //{
                 var xmlcontent = outbox_da.GetXmlContent(uuid);
@@ -87,7 +83,6 @@ namespace MdpInternProject.Controllers
 
                 System.IO.File.WriteAllText(inputFileName, HtmlString,Encoding.UTF8);
                 PdfGenerator.HtmlToPdf(dir, outputFileName, inputFileName);
-
             //}
 
             return File(dir+outputFileName, "application/pdf", outputFileName);
