@@ -18,7 +18,6 @@ namespace MdpInternProject.Utils
 {
     public class Operations
     {
-
         public static string ConnectionString
         {
             get
@@ -36,7 +35,6 @@ namespace MdpInternProject.Utils
 
         public static string TransformXMLToHTML(string inputXmlString, string box, Boolean encoded, bool removePreambles, string barcode, bool showAttachments)
         {
-
             if (encoded)
                 inputXmlString = decodeFrom64(inputXmlString);
 
@@ -51,7 +49,6 @@ namespace MdpInternProject.Utils
             }
 
             return getInvoiceHtml(inputXmlString, box, removePreambles, barcode, showAttachments);
-
         }
 
         private static string getInvoiceHtml(string inputXmlString, string box, bool removePreambles, string barcode, bool showAttachments)
@@ -68,7 +65,6 @@ namespace MdpInternProject.Utils
             {
                 throw new Exception("Error on XML data!." + ex.Message, ex.InnerException);
             }
-
             int hasPdfAttacment = 0;
             XmlNode xsltNode = null;
             List<XmlElement> elementlist = XmlHelper.FindNodesIn(invXml.DocumentElement, "AdditionalDocumentReference/Attachment/EmbeddedDocumentBinaryObject");
@@ -90,7 +86,6 @@ namespace MdpInternProject.Utils
             {
                 for (int i = 0; i < elementlist.Count; i++)
                 {
-
                     if (elementlist[i].Attributes["filename"] != null)
                         if (elementlist[i].Attributes["filename"].Value.ToLower().Contains(".pdf"))
                             hasPdfAttacment++;
@@ -105,7 +100,6 @@ namespace MdpInternProject.Utils
 
             if (xsltNode != null)
             {
-
                 string invoiceXslt = decodeFrom64(xsltNode.InnerText);
                 bool hp1 = invoiceXslt.StartsWith(_byteOrderMarkUtf8);
 

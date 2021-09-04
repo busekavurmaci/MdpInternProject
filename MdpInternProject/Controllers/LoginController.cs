@@ -13,7 +13,6 @@ namespace MdpInternProject.Controllers
 {
     public class LoginController : Controller
     {
-
         public ActionResult Login()
         {
             //-- form authentication

@@ -297,9 +297,7 @@ namespace Mdp.DataLayer.DAL.SQL
 
         public static DataTable GetDataTable(string queryText, string[] parameterNames, object[] parameterValues)
         {
-
             SqlConnection sqlcon = new SqlConnection(ConnectionString);
-
             SqlCommand cmd = new SqlCommand(queryText, sqlcon);
             cmd.CommandType = CommandType.Text;
 
@@ -323,10 +321,7 @@ namespace Mdp.DataLayer.DAL.SQL
                 {
                     throw;
                 }
-                
             }
-
-
             finally
             {
                 if (sqlcon.State == ConnectionState.Open)
@@ -334,15 +329,12 @@ namespace Mdp.DataLayer.DAL.SQL
                     sqlcon.Close();
                 }
             }
-
             return dt;
         }
         //------------------------------------------------------------
         public static DataTable GetDataTable2(string queryText, string[] parameterNames, object[] parameterValues)
         {
-
             SqlConnection sqlcon = new SqlConnection(ConnectionString);
-
             SqlCommand cmd = new SqlCommand(queryText, sqlcon);
             cmd.CommandType = CommandType.Text;
 
@@ -366,10 +358,7 @@ namespace Mdp.DataLayer.DAL.SQL
                 {
                     throw;
                 }
-
             }
-
-
             finally
             {
                 if (sqlcon.State == ConnectionState.Open)
@@ -377,7 +366,6 @@ namespace Mdp.DataLayer.DAL.SQL
                     sqlcon.Close();
                 }
             }
-
             return dt;
         }
         //--------------------------------------------------------

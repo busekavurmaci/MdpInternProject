@@ -11,7 +11,6 @@ namespace Mdp.Entities
 {
     public class outbox_da : IBusinessEntity
     {
-
         public Int64 id { get; set; }
         public string number { get; set; }
         public string uuid { get; set; }

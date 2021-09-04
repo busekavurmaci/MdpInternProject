@@ -9,7 +9,6 @@ namespace MdpInternProject.Utils
     public class XmlHelper
     {
         public static string XmlSchemaUrl = "http://www.w3.org/2001/XMLSchema.dtd";
-
         public static XmlElement CreateNodeIn(XmlDocument document, string prefix, string nodeName, string nameSpace, XmlElement rootNode)
         {
             var result = document.CreateElement(prefix,nodeName, nameSpace);
