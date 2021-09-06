@@ -161,41 +161,41 @@
                                 @{ if (Convert.ToInt32(dr["gib_status"]) == 1000)
                                     {
                                         <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Zarf Kuyruğa Eklendi." class="badge badge-warning">&nbsp;</label></td>
- }
+                                    }
 
                                     else if (Convert.ToInt32(dr["gib_status"]) == 1100)
                                     {
                                         <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Zarf İşleniyor." class="badge badge-warning">&nbsp;</label></td>
- }
+                                    }
 
                                     else if (Convert.ToInt32(dr["gib_status"]) <= 1199 && Convert.ToInt32(dr["gib_status"]) >= 1110)
                                     {
                                         <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Gönderildi - GIB'de Hata Aldı!" class="badge badge-danger">&nbsp;</label></td>
- }
+                                    }
 
                                     else if (Convert.ToInt32(dr["gib_status"]) == 1200)
                                     {
                                         <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Zarf Başarıyla İşlendi" class="badge badge-warning">&nbsp;</label></td>
- }
+                                    }
 
                                     else if (Convert.ToInt32(dr["gib_status"]) <= 1299 && Convert.ToInt32(dr["gib_status"]) >= 1201 && Convert.ToInt32(dr["gib_status"]) != 1220)
                                     {
                                         <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Alıcıdan Hata Aldı!" class="badge badge-warning">&nbsp;</label></td>
- }
+                                    }
 
                                     else if (Convert.ToInt32(dr["gib_status"]) == 1220)
                                     {
                                         <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Alıcıdan Sistem Yanıtı Başarısız Geldi." class="badge badge-danger">&nbsp;</label></td>
- }
+                                    }
 
                                     else if (Convert.ToInt32(dr["gib_status"]) == 1300)
                                     {
                                         <td class="column">@dr["gib_status"].ToString() <label data-toggle="tooltip" data-placement="top" title="Başarıyla Tamamlandı." class="badge badge-success">&nbsp;</label></td>
- }
+                                    }
                                     else
                                     {
                                         <td class="column"></td>
- } }
+                                    } }
                                 <td class="column"><a data-toggle="modal" data-target="#MyModal-@dr["uuid"]"><i class="far fa-eye"></i></a></td>
 
 
@@ -225,7 +225,7 @@
                                             <div class="modal-body">
                                                 <div class="col-md-12">
                                                     <div id="printThis">
-                                                        <iframe id="ifr" frameborder='0' src="Show?uuid=@dr["uuid"].ToString()" style="overflow-x:hidden; overflow-y:hidden; text-align:left; height:900px; width:900px; background:#F9FAF7"></iframe>
+                                                        <iframe id="ifr" frameborder='0' src="Show?uuid=@dr[" uuid"].ToString()" style="overflow-x:hidden; overflow-y:hidden; text-align:left; height:900px; width:900px; background:#F9FAF7"></iframe>
                                                     </div>
                                                 </div>
                                             </div>
@@ -271,7 +271,8 @@
             checkbox.checked = this.checked;
         }
     }
-
+</script>
+<script>
     function fnExcelReport(id, name) {
         var tab_text = '<html xmlns: x="urn:schemas-microsoft-com:office:excel">';
         tab_text = tab_text + '<head><xml><x: ExcelWorkbook><x: ExcelWorksheets><x: ExcelWorksheet>';
@@ -279,7 +280,6 @@
         tab_text = tab_text + '<x: WorksheetOptions><x: Panes></x: Panes></x: WorksheetOptions ></x: ExcelWorksheet > ';
         tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
         tab_text = tab_text + "<table border='1px' style='color:black'>";
-
 
         var exportTable = $('#' + id).clone();
         exportTable.find('th').last().remove();
@@ -294,10 +294,10 @@
         var blob = new Blob([tab_text], { type: "application/vnd.ms-excel;charset=utf-8" })
         window.saveAs(blob, fileName);
     }
-
+</script>
+<script>
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip({
             placement: 'bottom'
         });
-
 </script>
